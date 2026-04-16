@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIST 102 — The Ancient Mediterranean</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf8;
+            color: #2c2c2c;
+        }
+
+        body {
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .sidebar {
+            width: 280px;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            padding: 2rem 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+
+        .sidebar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #c9a84c;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        .progress-bar-container {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c9a84c;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #c9a84c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(201,168,76,0.1);
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background-color: rgba(201,168,76,0.15);
+            color: #c9a84c;
+            border-left-color: #c9a84c;
+            font-weight: 600;
+        }
+
+        .nav-link.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            color: #666;
+        }
+
+        .nav-link.locked::after {
+            content: ' 🔒';
+            font-size: 0.8em;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(201,168,76,0.2);
+        }
+
+        .reset-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgba(201,168,76,0.2);
+            color: #c9a84c;
+            border: 1px solid #c9a84c;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .reset-button:hover {
+            background-color: #c9a84c;
+            color: #1a1a2e;
+        }
+
+        /* MAIN CONTENT */
+        .main-container {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            overflow-y: auto;
+            padding: 3rem;
+            background-color: #fafaf8;
+        }
+
+        .content-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* COURSE HEADER */
+        .course-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #c9a84c;
+        }
+
+        .course-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-intro {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #2c2c2c;
+        }
+
+        /* MODULE SECTIONS */
+        .module-section {
+            display: none;
+        }
+
+        .module-section.active {
+            display: block;
+        }
+
+        .module-header {
+            margin-bottom: 2rem;
+        }
+
+        .module-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-meta {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-note {
+            background-color: #fffbf0;
+            border-left: 4px solid #c9a84c;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .module-note strong {
+            color: #c9a84c;
+        }
+
+        /* SECTION CONTENT */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            color: #2c2c2c;
+        }
+
+        .reading-item {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .reading-item strong {
+            color: #1a1a2e;
+        }
+
+        em {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* RESOURCE LINKS */
+        .resources-section {
+            background-color: #f9f7f4;
+            border-left: 4px solid #c9a84c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .resources-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background-color: #c9a84c;
+            color: #1a1a2e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.75rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #b89840;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+        }
+
+        /* ESSAY SECTION */
+        .essay-section {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .essay-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .essay-instructions {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .rubric-box {
+            background-color: #fffbf0;
+            border-left: 4px solid #c9a84c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .rubric-box-title {
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rubric-box ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .rubric-box li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .guiding-questions-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #2196F3;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .guiding-questions-title {
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guiding-questions-box ol {
+            margin-left: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .guiding-questions-box li {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .questions-textarea-box {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .questions-textarea-label {
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .questions-textarea-label .instructions {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .word-count {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .word-count.warning {
+            color: #d9534f;
+            font-weight: 600;
+        }
+
+        .word-count.ok {
+            color: #5cb85c;
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 400px;
+            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #c9a84c;
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+        }
+
+        .essay-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #c9a84c;
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            background-color: #b89840;
+        }
+
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: #2c2c2c;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d0d0d0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .modal-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+
+        .modal-steps {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .modal-steps ol {
+            margin-bottom: 0;
+        }
+
+        .modal-steps li {
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a2e;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #c9a84c;
+            border-radius: 1px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 280px;
+                height: 100vh;
+                z-index: 999;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .main-container {
+                margin-left: 0;
+            }
+
+            .content-wrapper {
+                padding: 1.5rem;
+                margin-top: 60px;
+            }
+
+            .course-title {
+                font-size: 1.8rem;
+            }
+
+            .module-title {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            textarea {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 250px;
+            }
+
+            .content-wrapper {
+                padding: 1rem;
+            }
+
+            .course-title {
+                font-size: 1.4rem;
+            }
+
+            .module-title {
+                font-size: 1.1rem;
+            }
+
+            .essay-buttons {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                max-width: 90%;
+                padding: 1.5rem;
+            }
+
+            .resource-link {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c9a84c;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b89840;
+        }
+    </style>
+</head>
+<body>
+    <!-- HAMBURGER MENU -->
+    <button class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">HIST 102</div>
+            <div class="sidebar-subtitle">The Ancient Mediterranean</div>
+        </div>
+
+        <div class="progress-bar-container">
+            <span class="progress-label">Progress</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div style="font-size: 0.75rem; color: #999; margin-top: 0.5rem;">
+                <span id="progressText">0</span>/6 completed
+            </div>
+        </div>
+
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link active" data-module="header">Course Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="m1">Module 1: Mesopotamia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="m2">Module 2: Ancient Egypt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="m3">Module 3: The Greek World</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="m4">Module 4: The Roman Empire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="m5">Module 5: Connections & Collapse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-module="final">Final Essay</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="reset-button" id="resetBtn">Reset All Progress</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="content-inner">
+                <!-- COURSE HEADER -->
+                <div class="module-section active" id="header">
+                    <div class="course-header">
+                        <h1 class="course-title">HIST 102</h1>
+                        <h2 class="course-subtitle">The Ancient Mediterranean: Mesopotamia, Egypt, Greece & Rome</h2>
+                        <p class="course-intro">The civilisations of the ancient Mediterranean were not isolated achievements — they were deeply interconnected, mutually influencing, and far more contested than later triumphalist narratives admitted. This course examines four of antiquity's greatest civilisations: Mesopotamia (the cradle of cities and writing), Egypt (the longest-lasting state in human history), Greece (the laboratory of democracy and philosophy), and Rome (the architect of Western law and imperial administration). At every turn, you will encounter scholarly disagreement — about origins, about influence, about who deserves credit, and about whose history is being told.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">How This Course Works</h3>
+                        <p class="section-text">This course consists of five modules, each exploring one of the ancient Mediterranean's greatest civilisations. Each module includes:</p>
+                        <ul>
+                            <li><strong>Guiding Questions</strong> to frame your thinking</li>
+                            <li><strong>Core Readings</strong> — a curated selection of books and primary sources</li>
+                            <li><strong>Academic Sources</strong> for deeper research</li>
+                            <li><strong>Online Resources</strong> — clickable links to free lectures, podcasts, documentaries, and museum collections</li>
+                            <li><strong>Key Debates</strong> — scholarly disagreements that remain live and contested</li>
+                            <li><strong>Discussion Prompts</strong> to sharpen your analysis</li>
+                            <li><strong>An Essay Assignment</strong> (minimum 800 words) that you submit to Claude for grading</li>
+                        </ul>
+                        <p class="section-text" style="margin-top: 1.5rem;">Module N+1 unlocks only after you have submitted the essay for Module N. A final essay (1,500+ words) unlocks after all five modules are complete. This course is designed for serious engagement — not passive consumption. You are expected to read, think, debate, and defend your interpretations.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">How to Use the Readings</h3>
+                        <p class="section-text">The <strong>Core Readings</strong> are central texts you should read in full (or large portions thereof). They are the foundation of this course. The <strong>Academic Sources</strong> are for deeper research if you want to engage with specific scholarly debates. The <strong>Online Resources</strong> provide free access to lectures, podcasts, documentaries, and museum collections to supplement your reading.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">On Academic Integrity</h3>
+                        <p class="section-text">Your essays should be your own work. You are welcome to discuss ideas with others, consult scholarly sources, and seek feedback. But when you submit your essay to Claude, it should reflect your own thinking and your own words. Claude's role is to provide expert feedback on your arguments, not to generate them for you.</p>
+                    </div>
+
+                    <!-- GLOBAL RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Global Online Resources (All Modules)</div>
+                        <a href="https://oyc.yale.edu/classics/clcv-205" target="_blank" rel="noopener" class="resource-link">Yale Open Courses – Ancient Greek History</a>
+                        <a href="https://oyc.yale.edu/history-of-art/hsar-252" target="_blank" rel="noopener" class="resource-link">Yale Open Courses – Roman Architecture</a>
+                        <a href="https://ocw.mit.edu/courses/21h-132-the-ancient-world-rome-spring-2017/" target="_blank" rel="noopener" class="resource-link">MIT OCW – Ancient World: Rome</a>
+                        <a href="https://ocw.mit.edu/courses/21h-301-the-ancient-world-greece-fall-2004/" target="_blank" rel="noopener" class="resource-link">MIT OCW – Ancient World: Greece</a>
+                        <a href="https://www.britishmuseum.org/collection/galleries/mesopotamia" target="_blank" rel="noopener" class="resource-link">British Museum – Mesopotamia</a>
+                        <a href="https://www.britishmuseum.org/our-work/departments/egypt-and-sudan" target="_blank" rel="noopener" class="resource-link">British Museum – Egypt & Sudan</a>
+                        <a href="https://www.metmuseum.org/departments/egyptian-art" target="_blank" rel="noopener" class="resource-link">Metropolitan Museum – Egyptian Art</a>
+                    </div>
+                </div>
+
+                <!-- MODULE 1 -->
+                <div class="module-section" id="m1">
+                    <div class="module-header">
+                        <h2 class="module-title">Module 1: Mesopotamia — The First Cities and Empires</h2>
+                        <div class="module-meta">Timeframe: c. 3500–539 BCE</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Overview</h3>
+                        <p class="section-text">Between the Tigris and Euphrates, humans built the world's first cities, invented writing, codified law, and created the first literature. The Epic of Gilgamesh predates Homer by over a thousand years. But Mesopotamian civilisation also raises hard questions: were these early states cooperative achievements, or were they — as James C. Scott argues in <em>Against the Grain</em> — fundamentally coercive structures built on grain extraction, slavery, and forced labour?</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Core Readings</h3>
+                        <div class="reading-item">
+                            <strong><em>A History of the Ancient Near East ca. 3000–323 BC</em></strong> — Marc Van De Mieroop (4th ed., Wiley, 2024). The leading comprehensive textbook on Mesopotamian history by the Professor of History at Columbia University.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Epic of Gilgamesh</em></strong> — translated by Andrew George (Penguin Classics, 1999). The world's oldest work of literature (c. 2100 BCE). Read it — not just about it.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>Cuneiform: Ancient Scripts</em></strong> — Irving Finkel (Getty Publications, 2012). Finkel is an Assyriologist at the British Museum; this explains the invention and evolution of writing with real tablet examples.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Academic Sources</h3>
+                        <ul>
+                            <li>Tuplin, C. "Managing the World: Herodotus on Persian Imperial Administration." In <em>Herodotus and the Persian Empire</em> (2013). Examines how Persian administrative systems evolved from earlier Mesopotamian models.</li>
+                            <li>Postgate, J.N. — chapters on early Mesopotamian society, economy, and urban innovation (standard Assyriology reference works).</li>
+                        </ul>
+                    </div>
+
+                    <!-- MODULE 1 RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Online Resources for Module 1</div>
+                        <a href="https://www.gutenberg.org/ebooks/11000" target="_blank" rel="noopener" class="resource-link">Epic of Gilgamesh – Project Gutenberg (Free Text)</a>
+                        <a href="https://literatureandhistory.com/episode-003-he-who-saw-the-deep/" target="_blank" rel="noopener" class="resource-link">Literature & History Podcast – Epic of Gilgamesh</a>
+                        <a href="https://shows.acast.com/the-ancients/episodes/sumerians" target="_blank" rel="noopener" class="resource-link">The Ancients Podcast – Sumerians</a>
+                        <a href="https://theconversation.com/topics/ancient-history-6401" target="_blank" rel="noopener" class="resource-link">The Conversation – Ancient History Hub</a>
+                        <a href="https://www.water-alternatives.org/index.php/alldoc/articles/vol9/v9issue2/320-a9-2-10/file" target="_blank" rel="noopener" class="resource-link">Water Alternatives – Wittfogel Hydraulic Hypothesis Critique</a>
+                        <a href="https://www.britishmuseum.org/collection/galleries/mesopotamia" target="_blank" rel="noopener" class="resource-link">British Museum – Mesopotamia Collection</a>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Key Debate: The Hydraulic Hypothesis — Did Irrigation Create the State?</h3>
+                        <p class="section-text"><strong>Position A — Wittfogel's Hydraulic Hypothesis (1957):</strong> Large-scale irrigation systems required centralised state control to coordinate labour and water distribution. This led to 'hydraulic empires' — inherently despotic states in Mesopotamia, Egypt, China, and Mesoamerica, where control of water meant control of people. The state was created by environmental necessity.</p>
+                        <p class="section-text"><strong>Position B — The Critique (Robert McCormick Adams Jr. and others):</strong> Archaeological excavation of Mesopotamia demonstrates that dynastic authority developed BEFORE large-scale canal systems, not after them. The state was not created by irrigation bureaucracy. Adams's fieldwork showed that early Mesopotamian political organisation was more decentralised and competitive than Wittfogel's model allowed. Modern scholars also note Wittfogel's model was partly shaped by Cold War anti-communist politics (he was drawing a parallel between ancient 'oriental despotism' and Soviet communism).</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Discussion Prompts</h3>
+                        <ol>
+                            <li>The Epic of Gilgamesh is the world's oldest surviving work of literature. What does it tell us about what Mesopotamians valued, feared, and believed? Does reading a primary source change your understanding of this civilisation compared to reading about it?</li>
+                            <li>Wittfogel's hydraulic hypothesis has been largely discredited archaeologically, yet it remains influential. Why do grand theories about the origins of the state persist even when the evidence against them is strong?</li>
+                            <li>Writing was invented as an accounting tool — to record grain and livestock transactions. Does the mundane origin of writing change how you think about it as a cultural achievement?</li>
+                        </ol>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Additional Deep Dive</h3>
+                        <ul>
+                            <li><em>Ancient Iraq</em> — Georges Roux (3rd ed., Routledge, 2002). Comprehensive survey.</li>
+                            <li><em>The Sumerians: Their History, Culture, and Character</em> — Samuel Noah Kramer (University of Chicago Press, 1963).</li>
+                            <li><em>The Ancient Near East: A Very Short Introduction</em> — Amanda Podany (Oxford, 2014).</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Module 1 Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "Was the Mesopotamian city-state a cooperative achievement or a coercive structure? Assess the evidence."<br><br>
+                            <strong>Instructions:</strong> Write at least 800 words. Engage with the hydraulic hypothesis debate and draw on the Epic of Gilgamesh as a primary source to illuminate Mesopotamian values and social structure. Submit to Claude when complete.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guiding-questions-box">
+                            <div class="guiding-questions-title">💡 Questions to Guide Your Thinking</div>
+                            <ol>
+                                <li>What does the invention of writing tell us about what early Mesopotamian states valued — and who benefited?</li>
+                                <li>Can we read the Epic of Gilgamesh as evidence of Mesopotamian political ideology? What are the risks of using literary texts as historical sources?</li>
+                                <li>Wittfogel's theory has been largely discredited, yet the idea that environmental conditions shape political systems remains influential. In what modified form might hydraulic thinking still be useful?</li>
+                                <li>Were early cities primarily centres of commerce, religion, or coercion — or is that a false choice?</li>
+                            </ol>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Questions for Claude (ask me anything about this module)
+                                <span class="instructions">Type your questions here and copy them into our conversation — I'll answer them before you write your essay.</span>
+                            </div>
+                            <textarea id="m1-questions" placeholder="What confuses you about this module? Ask away."></textarea>
+                        </div>
+
+                        <div class="word-count" id="m1-wordcount">0 words (minimum 800 required)</div>
+                        <textarea id="m1-essay" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="m1-save">Save Draft</button>
+                            <button class="btn btn-primary" id="m1-submit">Submit Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 2 -->
+                <div class="module-section" id="m2">
+                    <div class="module-header">
+                        <h2 class="module-title">Module 2: Ancient Egypt — The Nile and Its Civilisations</h2>
+                        <div class="module-meta">Timeframe: c. 3100–332 BCE</div>
+                        <div class="module-note">📚 <strong>IMPORTANT NOTE:</strong> You already own <em>The Rise and Fall of Ancient Egypt</em> by Toby Wilkinson (Random House, 2010). <strong>This is your primary text for this module</strong> — make it the foundation of your essay.</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Overview</h3>
+                        <p class="section-text">Egypt is the longest-lasting state in human history — over three thousand years. It is also one of the most contested: who were the ancient Egyptians? Were they African? Mediterranean? Something else? The debate, which exploded with the work of Cheikh Anta Diop and later Martin Bernal, goes far beyond academic classification — it is a debate about who owns the past, whose civilisation gets to be the foundation of 'Western' history, and how racism shaped the discipline of Egyptology itself.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Core Readings</h3>
+                        <div class="reading-item">
+                            <strong><em>The Rise and Fall of Ancient Egypt</em></strong> — Toby Wilkinson (Random House, 2010). <strong>[YOU ALREADY OWN THIS — IT IS YOUR PRIMARY TEXT FOR THIS MODULE.]</strong> Wilkinson's narrative history covers three millennia of Egyptian civilisation with rigour and accessibility; it places Egypt in its Mediterranean and African context and does not shy from the coercive dimensions of pharaonic power.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The African Origin of Civilization: Myth or Reality</em></strong> — Cheikh Anta Diop (Lawrence Hill Publishers, 1974). ESSENTIAL for understanding the Afrocentric argument. Diop argued that traditional Egyptology was Eurocentric and denied Egypt's African identity. His work remains influential and contested.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Oxford History of Ancient Egypt</em></strong> — ed. Ian Shaw (Oxford University Press, 2000). The authoritative scholarly survey; use as a reference alongside Wilkinson.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Academic Sources</h3>
+                        <ul>
+                            <li>Kamugisha, A. (2003). "Finally in Africa? Egypt, from Diop to Celenko." <em>Race and Class</em>, 45(1). Examines the legacy and scholarly critiques of Diop's work.</li>
+                            <li>O'Connor, D. & Reid, A. (eds.), <em>Ancient Egypt in Africa</em> (University of Pennsylvania Press, 2003) — chapters on Egyptian-Nubian interactions and bidirectional cultural exchange.</li>
+                        </ul>
+                    </div>
+
+                    <!-- MODULE 2 RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Online Resources for Module 2</div>
+                        <a href="https://www.gutenberg.org/ebooks/2131" target="_blank" rel="noopener" class="resource-link">Herodotus – Account of Egypt (Project Gutenberg)</a>
+                        <a href="https://digpodcast.org/2017/08/13/black-athena-controversy-battle-of-historians/" target="_blank" rel="noopener" class="resource-link">DIG Podcast – Black Athena Controversy</a>
+                        <a href="https://theconversation.com/topics/ancient-history-6401" target="_blank" rel="noopener" class="resource-link">The Conversation – Ancient Egypt Articles</a>
+                        <a href="https://www.metmuseum.org/departments/egyptian-art" target="_blank" rel="noopener" class="resource-link">Metropolitan Museum – Egyptian Art</a>
+                        <a href="https://www.britishmuseum.org/our-work/departments/egypt-and-sudan" target="_blank" rel="noopener" class="resource-link">British Museum – Egypt and Sudan</a>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Key Debate: Was Ancient Egypt African? The Afrocentric Debate</h3>
+                        <p class="section-text"><strong>Position A — Afrocentric Position (Cheikh Anta Diop; later Martin Bernal's <em>Black Athena</em>):</strong> Ancient Egypt was fundamentally African, with significant sub-Saharan African ancestry and deep cultural ties to the African continent. Traditional Egyptology was shaped by 19th-century Eurocentric racism that systematically 'whitened' the Egyptians to make their civilisation a precursor to Greece and Rome rather than to Africa. The 25th Dynasty (Nubian pharaohs) was not an 'invasion' but a restoration of a fundamentally African civilisation.</p>
+                        <p class="section-text"><strong>Position B — Traditional Egyptology's Response:</strong> Egypt's primary cultural, linguistic, and geographic affinities lay with the Near East and the broader Mediterranean world. Nile Valley geography placed Egypt at the crossroads of Africa, Asia, and the Mediterranean — not exclusively within sub-Saharan Africa. The 'race' question is largely anachronistic (ancient Egyptians did not understand race as modern people do).</p>
+                        <p class="section-text"><strong>The Current Scholarly Position:</strong> Most modern scholars have moved away from racial categories entirely. What is undisputed: (1) Egypt and Nubia/Kush had profound, bidirectional relationships — not master/subordinate; (2) The 25th Dynasty was real and significant; (3) 19th-century Egyptology WAS shaped by racial assumptions; (4) Ancient DNA studies (2017) are contested and methodologically complex. The debate has productively forced scholars to take African connections seriously.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Discussion Prompts</h3>
+                        <ol>
+                            <li>Wilkinson argues that pharaonic power was far more violent and coercive than the monuments suggest. How does his account complicate the popular image of ancient Egypt as a harmonious civilisation?</li>
+                            <li>The debate between Diop's Afrocentrism and traditional Egyptology is partly about evidence, but partly about politics. Can you separate the two? Should you?</li>
+                            <li>The 25th Dynasty — when Nubian kings from Kush ruled Egypt — is often treated as a footnote in Egyptology textbooks. Why might that be, and what does it tell us about historiography?</li>
+                        </ol>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Additional Deep Dive</h3>
+                        <ul>
+                            <li><em>Black Athena: The Afroasiatic Roots of Classical Civilization</em>, Vol. I — Martin Bernal (Rutgers, 1987).</li>
+                            <li><em>Red Land, Black Land: Daily Life in Ancient Egypt</em> — Barbara Mertz (2nd ed., Harper Perennial, 2008).</li>
+                            <li><em>The Complete Tutankhamun</em> — Nicholas Reeves (Thames and Hudson, 1990).</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Module 2 Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "How did the Afrocentric debate change Egyptology — and what remains unresolved?"<br><br>
+                            <strong>Instructions:</strong> Write at least 800 words. Use Wilkinson's <em>The Rise and Fall of Ancient Egypt</em> as your primary source, and engage with Diop's argument (even if you ultimately disagree with it). Address what the Nubian/Kushite relationship tells us. Submit to Claude when complete.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guiding-questions-box">
+                            <div class="guiding-questions-title">💡 Questions to Guide Your Thinking</div>
+                            <ol>
+                                <li>Wilkinson argues that pharaonic power was maintained through both spectacle and violence. What evidence from the book supports this? Does it change your view of Egyptian 'grandeur'?</li>
+                                <li>The Afrocentric debate is partly about evidence and partly about politics. Can you separate the two — and should a historian try to?</li>
+                                <li>What does the 25th Dynasty (Nubian pharaohs ruling Egypt) tell us about the relationship between Egypt and Africa? Why has this period been marginalised in popular history?</li>
+                                <li>What methodological problems arise when using ancient DNA evidence to answer questions about ancient Egyptian ancestry and identity?</li>
+                            </ol>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Questions for Claude (ask me anything about this module)
+                                <span class="instructions">Type your questions here and copy them into our conversation — I'll answer them before you write your essay.</span>
+                            </div>
+                            <textarea id="m2-questions" placeholder="What confuses you about this module? Ask away."></textarea>
+                        </div>
+
+                        <div class="word-count" id="m2-wordcount">0 words (minimum 800 required)</div>
+                        <textarea id="m2-essay" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="m2-save">Save Draft</button>
+                            <button class="btn btn-primary" id="m2-submit">Submit Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 3 -->
+                <div class="module-section" id="m3">
+                    <div class="module-header">
+                        <h2 class="module-title">Module 3: The Greek World — Democracy, Philosophy, and War</h2>
+                        <div class="module-meta">Timeframe: c. 800–323 BCE</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Overview</h3>
+                        <p class="section-text">Athens is celebrated as the birthplace of democracy. But Athenian democracy excluded women, enslaved roughly a third of the population, and expelled foreigners from political life. The 'Greek miracle' — the sudden flowering of philosophy, science, and democratic thought — has been used to construct a narrative of Western uniqueness. Scholars like Martin Bernal challenge whether this 'miracle' was as original as advertised, or whether it drew heavily — and unacknowledged — from Egyptian and Near Eastern foundations.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Core Readings</h3>
+                        <div class="reading-item">
+                            <strong><em>The Athenian Revolution</em></strong> — Josiah Ober (Princeton University Press, 1996). The leading scholarly examination of how Athenian democracy emerged and what it actually meant — including who was excluded.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Spartans: The World of the Warrior-Heroes of Ancient Greece</em></strong> — Paul Cartledge (Oxford University Press, 2002). Authoritative account by one of the world's leading experts on ancient Greece; a crucial counterpoint to the Athenian narrative.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>Black Athena: The Afroasiatic Roots of Classical Civilization</em>, Vol. I</strong> — Martin Bernal (Rutgers University Press, 1987). Provocative argument that Greek civilisation drew heavily from Egyptian and Phoenician sources, and that this debt was systematically erased by Eurocentric scholarship.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Academic Sources</h3>
+                        <ul>
+                            <li>Ober, J. — "Athenian Democracy: A Brief Overview" (multiple scholarly volumes). On democracy's mechanisms and exclusions.</li>
+                            <li>Scholarly articles on slavery in Athens — evidence that ~30–40% of the population were enslaved, and that Athenian democracy's rise coincided with the expansion of slavery.</li>
+                        </ul>
+                    </div>
+
+                    <!-- MODULE 3 RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Online Resources for Module 3</div>
+                        <a href="https://oyc.yale.edu/classics/clcv-205" target="_blank" rel="noopener" class="resource-link">Yale Open Courses – Introduction to Ancient Greek History</a>
+                        <a href="https://ocw.mit.edu/courses/21h-301-the-ancient-world-greece-fall-2004/" target="_blank" rel="noopener" class="resource-link">MIT OCW – Ancient World: Greece</a>
+                        <a href="https://www.gutenberg.org/ebooks/2707" target="_blank" rel="noopener" class="resource-link">Herodotus – The History (Project Gutenberg)</a>
+                        <a href="https://www.gutenberg.org/ebooks/26245" target="_blank" rel="noopener" class="resource-link">Thucydides – Peloponnesian War (Project Gutenberg)</a>
+                        <a href="https://arjonline.org/papers/arjhc/v9-i1/6.pdf" target="_blank" rel="noopener" class="resource-link">Open-access Article – Slavery in Athenian Democracy</a>
+                        <a href="https://digpodcast.org/2017/08/13/black-athena-controversy-battle-of-historians/" target="_blank" rel="noopener" class="resource-link">DIG Podcast – Black Athena Controversy</a>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Key Debate: The 'Greek Miracle' — Original Achievement or Built on African and Near Eastern Foundations?</h3>
+                        <p class="section-text"><strong>Position A — The Greek Miracle (Conventional view):</strong> Greek civilisation — philosophy, democracy, rhetoric, rational inquiry — represented a revolutionary departure from 'Oriental' traditions. Greece was the source of the Western intellectual tradition.</p>
+                        <p class="section-text"><strong>Position B — Bernal's Black Athena:</strong> Greek culture was heavily indebted to Egypt and Phoenicia. The 'Aryan model' (claiming Greek cultural independence) replaced an older 'Ancient Model' in which Greeks themselves acknowledged their debts to Egyptian and Eastern predecessors. Eurocentric 18th–19th century scholarship rewrote this history.</p>
+                        <p class="section-text"><strong>The Scholarly Response to Bernal:</strong> Many classicists have criticised Bernal's specific claims (etymology, archaeological dating) while acknowledging his larger point: Greek civilisation did borrow extensively from the Near East and Egypt, and this was obscured by Eurocentric scholarship. The debate has been productive even where Bernal's evidence is weak.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Discussion Prompts</h3>
+                        <ol>
+                            <li>Josiah Ober argues democracy was revolutionary for those included. Is 'revolutionary' still the right word when 60–70% of the population were excluded or enslaved?</li>
+                            <li>Martin Bernal's Black Athena thesis was attacked on both scholarly and political grounds. How do you evaluate a historical argument when the academic debate and the political debate are so intertwined?</li>
+                            <li>Sparta and Athens are often presented as opposites. Both relied on enslaved labour. Does this shared foundation undermine the usual 'democracy vs. militarism' framing?</li>
+                            <li>Is the concept of the 'Greek miracle' a historical observation or a historiographical construct?</li>
+                        </ol>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Additional Deep Dive</h3>
+                        <ul>
+                            <li><em>Democracy and Knowledge</em> — Josiah Ober (Princeton, 2008).</li>
+                            <li><em>Greece in the Making, 1200–479 BC</em> — Robin Osborne (Routledge, 1996).</li>
+                            <li><em>The Ancient Greeks</em> — Moses I. Finley (Penguin, 1977).</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Module 3 Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "Was Athenian democracy a genuine democratic achievement, or an exclusionary system that has been dangerously idealised?"<br><br>
+                            <strong>Instructions:</strong> Write at least 800 words. Use Ober's work as your primary scholarly source. Address the slavery question directly, and engage with the debate about Greek 'originality.' Submit to Claude when complete.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guiding-questions-box">
+                            <div class="guiding-questions-title">💡 Questions to Guide Your Thinking</div>
+                            <ol>
+                                <li>Josiah Ober argues democracy was revolutionary for those included. Is 'revolutionary' still the right word when 60–70% of the population were excluded or enslaved?</li>
+                                <li>Martin Bernal's Black Athena thesis was attacked on both scholarly and political grounds. How do you evaluate a historical argument when the academic debate and the political debate are so intertwined?</li>
+                                <li>Sparta and Athens are often presented as opposites. Both relied on enslaved labour. Does this shared foundation undermine the usual 'democracy vs. militarism' framing?</li>
+                                <li>Is the concept of the 'Greek miracle' a historical observation or a historiographical construct?</li>
+                            </ol>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Questions for Claude (ask me anything about this module)
+                                <span class="instructions">Type your questions here and copy them into our conversation — I'll answer them before you write your essay.</span>
+                            </div>
+                            <textarea id="m3-questions" placeholder="What confuses you about this module? Ask away."></textarea>
+                        </div>
+
+                        <div class="word-count" id="m3-wordcount">0 words (minimum 800 required)</div>
+                        <textarea id="m3-essay" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="m3-save">Save Draft</button>
+                            <button class="btn btn-primary" id="m3-submit">Submit Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 4 -->
+                <div class="module-section" id="m4">
+                    <div class="module-header">
+                        <h2 class="module-title">Module 4: The Roman Republic and Empire</h2>
+                        <div class="module-meta">Timeframe: c. 753 BCE – 476 CE</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Overview</h3>
+                        <p class="section-text">Rome is the longest-running story in this course — over a thousand years from the founding of the Republic to the fall of the Western Empire. It is also one of the most interpreted. Every generation since the Renaissance has used Rome as a mirror: republicans, imperialists, revolutionaries, and fascists have all claimed its legacy. This module focuses on two central questions: why did the Republic fall? And did the Empire 'fall' — or transform?</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Core Readings</h3>
+                        <div class="reading-item">
+                            <strong><em>SPQR: A History of Ancient Rome</em></strong> — Mary Beard (Liveright, 2015). The best accessible scholarly account of Rome; Beard is a Cambridge classicist who pays particular attention to who was excluded from Roman history.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>As the Romans Did: A Sourcebook in Roman Social History</em></strong> — Joann Shelton (2nd ed., Oxford University Press, 1997). Primary source anthology: slavery, women, household life, law, gladiators — hearing Roman voices directly.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Fall of Rome and the End of Civilization</em></strong> — Bryan Ward-Perkins (Oxford University Press, 2005). Argues, against the fashionable 'transformation' school, that the 5th century was genuinely catastrophic — real economic and cultural collapse, not peaceful change.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Academic Sources</h3>
+                        <ul>
+                            <li>Jones, A.H.M. — chapters from <em>The Later Roman Empire</em> (Johns Hopkins, 1964) on Roman law, slavery, and provincial administration. Still the standard reference after 60 years.</li>
+                            <li>Harper, K. — key arguments from <em>The Fate of Rome: Climate, Disease, and the End of an Empire</em> (Princeton, 2017) — integrating paleoclimatology and epidemiology.</li>
+                        </ul>
+                    </div>
+
+                    <!-- MODULE 4 RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Online Resources for Module 4</div>
+                        <a href="https://rome-podcast.com/about/" target="_blank" rel="noopener" class="resource-link">The History of Rome Podcast</a>
+                        <a href="https://open.spotify.com/episode/5biepeD3eUeZGn76fC6d5x" target="_blank" rel="noopener" class="resource-link">History of Rome – First Episode on Spotify</a>
+                        <a href="https://archive.org/details/the-history-of-rome" target="_blank" rel="noopener" class="resource-link">The History of Rome – Internet Archive (Full)</a>
+                        <a href="https://shows.acast.com/the-ancients/episodes/the-fall-of-rome-origins" target="_blank" rel="noopener" class="resource-link">The Ancients Podcast – Fall of Rome</a>
+                        <a href="https://ocw.mit.edu/courses/21h-132-the-ancient-world-rome-spring-2017/" target="_blank" rel="noopener" class="resource-link">MIT OCW – Ancient World: Rome</a>
+                        <a href="https://www.gutenberg.org/ebooks/731" target="_blank" rel="noopener" class="resource-link">Gibbon's Decline and Fall – Vol. 1 (Project Gutenberg)</a>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Key Debate: Did Rome 'Fall' or Transform?</h3>
+                        <p class="section-text"><strong>Position A — Decline and Fall (Gibbon; also Ward-Perkins):</strong> Rome fell in 476 CE. The Western Empire collapsed under barbarian pressure. Standards of living dropped measurably: pottery quality declined, coin circulation fell, literacy collapsed, urban populations shrank. Ward-Perkins uses archaeological evidence to demonstrate that there was a real 'end of civilisation' in the West — not a peaceful transformation.</p>
+                        <p class="section-text"><strong>Position B — Transformation (Peter Brown and the 'Late Antiquity' School):</strong> The 5th–7th centuries were not a catastrophic collapse but a cultural transformation. Christianity, legal traditions, and urban life persisted in new forms. 'Late Antiquity' was creatively vibrant, not dark. The periodisation 'fall of Rome' is a later intellectual construction.</p>
+                        <p class="section-text"><strong>Position C — Environmental/Biological Factors (Kyle Harper, <em>The Fate of Rome</em>, 2017):</strong> Climate change (volcanic eruptions, solar cycles, cooling temperatures from the 3rd century onward) and epidemic disease (the Antonine Plague, the Plague of Cyprian, the Plague of Justinian) were primary drivers of demographic and economic decline — factors largely beyond Rome's political control.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Discussion Prompts</h3>
+                        <ol>
+                            <li>Was the fall of the Roman Republic structurally inevitable, or was it contingent on the choices of individuals like Caesar, Pompey, and Augustus?</li>
+                            <li>Mary Beard argues asking 'why did Rome fall' is the wrong question. Do you agree? What would be the better question?</li>
+                            <li>Bryan Ward-Perkins and Peter Brown are both serious scholars who reach opposite conclusions about the 5th century. What does this tell you about how historical evidence works?</li>
+                            <li>Kyle Harper introduces climate and disease as historical agents. Does this kind of structural/environmental explanation reduce or enhance your understanding of Roman history?</li>
+                        </ol>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Additional Deep Dive</h3>
+                        <ul>
+                            <li><em>The Fate of Rome: Climate, Disease, and the End of an Empire</em> — Kyle Harper (Princeton, 2017).</li>
+                            <li><em>The Rise of Western Christendom</em> — Peter Brown (2nd ed., Blackwell, 2003).</li>
+                            <li><em>The History of the Decline and Fall of the Roman Empire</em> — Edward Gibbon (1776–1788; abridged Penguin edition, 1985). Read Gibbon not for accuracy but because understanding historiography means reading the texts that shaped it.</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Module 4 Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "Did Rome fall or transform? Evaluate the competing explanations for the end of the Western Roman Empire."<br><br>
+                            <strong>Instructions:</strong> Write at least 800 words. You must address at least three of the following: barbarian invasions, internal political instability, Christianity, climate change, disease, and economic decline. Engage with Ward-Perkins and at least one alternative view. Submit to Claude when complete.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guiding-questions-box">
+                            <div class="guiding-questions-title">💡 Questions to Guide Your Thinking</div>
+                            <ol>
+                                <li>Was the fall of the Roman Republic structurally inevitable, or was it contingent on the choices of individuals like Caesar, Pompey, and Augustus?</li>
+                                <li>Mary Beard argues asking 'why did Rome fall' is the wrong question. Do you agree? What would be the better question?</li>
+                                <li>Bryan Ward-Perkins and Peter Brown are both serious scholars who reach opposite conclusions about the 5th century. What does this tell you about how historical evidence works?</li>
+                                <li>Kyle Harper introduces climate and disease as historical agents. Does this kind of structural/environmental explanation reduce or enhance your understanding of Roman history?</li>
+                            </ol>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Questions for Claude (ask me anything about this module)
+                                <span class="instructions">Type your questions here and copy them into our conversation — I'll answer them before you write your essay.</span>
+                            </div>
+                            <textarea id="m4-questions" placeholder="What confuses you about this module? Ask away."></textarea>
+                        </div>
+
+                        <div class="word-count" id="m4-wordcount">0 words (minimum 800 required)</div>
+                        <textarea id="m4-essay" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="m4-save">Save Draft</button>
+                            <button class="btn btn-primary" id="m4-submit">Submit Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 5 -->
+                <div class="module-section" id="m5">
+                    <div class="module-header">
+                        <h2 class="module-title">Module 5: Connections and Collapse — Trade, Religion, and the Late Antique World</h2>
+                        <div class="module-meta">Timeframe: c. 200–800 CE</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Overview</h3>
+                        <p class="section-text">This module asks you to zoom out and see the ancient Mediterranean not as a series of separate civilisations but as a connected system — of trade, religion, disease, and ideas. It also asks you to question one of the most influential theses in medieval history: Henri Pirenne's argument that it was Islamic expansion, not the Germanic invasions, that truly severed the Mediterranean world and created the Middle Ages.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Core Readings</h3>
+                        <div class="reading-item">
+                            <strong><em>The Rise of Western Christendom</em></strong> — Peter Brown (2nd ed., Blackwell, 2003). Definitive history of Christianity's expansion across the former Roman world; argues for vitality, not decline.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Fate of Rome: Climate, Disease, and the End of an Empire</em></strong> — Kyle Harper (Princeton, 2017). Groundbreaking integration of paleoclimatology, epidemiology, and history.
+                        </div>
+                        <div class="reading-item">
+                            <strong><em>The Fall of Rome and the End of Civilization</em></strong> — Bryan Ward-Perkins (Oxford, 2005). Counterargument: uses archaeological evidence (pottery, coinage, building) to demonstrate real economic collapse.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Academic Sources</h3>
+                        <ul>
+                            <li>Pirenne, H. — key arguments from <em>Mohammed and Charlemagne</em> (1939): Islamic conquests, not Germanic invasions, severed Mediterranean trade.</li>
+                            <li>Effros, B. — "The Enduring Attraction of the Pirenne Thesis" — critical examination of Pirenne's evidence and its limits.</li>
+                        </ul>
+                    </div>
+
+                    <!-- MODULE 5 RESOURCES -->
+                    <div class="resources-section">
+                        <div class="resources-title">🌐 Online Resources for Module 5</div>
+                        <a href="https://literatureandhistory.com/" target="_blank" rel="noopener" class="resource-link">Literature and History Podcast – Introduction to Late Antiquity</a>
+                        <a href="https://shows.acast.com/the-ancients/episodes/the-fall-of-rome-origins" target="_blank" rel="noopener" class="resource-link">The Ancients Podcast – Fall of Rome</a>
+                        <a href="https://livrepository.liverpool.ac.uk/3009847/1/Effros%20Enduring%20Attraction%20of%20Pirenne%20(Open%20Access).pdf" target="_blank" rel="noopener" class="resource-link">Open-access Article – "The Enduring Attraction of the Pirenne Thesis"</a>
+                        <a href="https://www.gutenberg.org/ebooks/25717" target="_blank" rel="noopener" class="resource-link">Gibbon's Decline and Fall – Full Set (Project Gutenberg)</a>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Key Debate: The Pirenne Thesis — Did Islam Create the Middle Ages?</h3>
+                        <p class="section-text"><strong>Position A — Pirenne's Thesis (1939):</strong> It was the Islamic conquests of the 7th century — not the Germanic invasions of the 5th — that truly ended the ancient Mediterranean world. By cutting off western Europe from eastern trade networks, Islam forced northern Europe to become self-sufficient, creating the conditions for the Carolingian world and ultimately medieval Europe.</p>
+                        <p class="section-text"><strong>Position B — The Critique:</strong> Archaeological evidence (later examined by Maurice Lombard and others) shows that Mediterranean trade continued through and after the Islamic conquests, albeit in transformed forms. Muslim merchants were active traders; the Mediterranean remained a zone of exchange. The break was less clean and less catastrophic than Pirenne claimed.</p>
+                        <p class="section-text"><strong>Position C — Environmental/Pandemic Explanation (Harper):</strong> The real discontinuity was not political (Germanic invasions or Islamic conquests) but biological and climatic: the Plague of Justinian (541–549 CE), possibly the first bubonic plague pandemic, killed 25–50 million people across the Mediterranean and Near East. Combined with climate cooling, this reshaped demographics, trade, and political power far more than any military event.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Discussion Prompts</h3>
+                        <ol>
+                            <li>Pirenne wrote <em>Mohammed and Charlemagne</em> while imprisoned by the Germans in World War I, working from memory. Does this context — both the biographical and the geopolitical — affect how you read his argument?</li>
+                            <li>What would it feel like to live through the 'end' of the ancient world? What evidence would a person living in, say, 500 CE have that something had fundamentally changed?</li>
+                            <li>Is 'Late Antiquity' a useful periodisation, or does it obscure more than it reveals by avoiding the word 'decline'?</li>
+                            <li>You have now studied Mesopotamia, Egypt, Greece, and Rome. What single structural feature — political, economic, ecological — connects all four civilisations?</li>
+                        </ol>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Additional Deep Dive</h3>
+                        <ul>
+                            <li><em>Augustine of Hippo: A Biography</em> — Peter Brown (2000). Intellectual history of late antiquity through its greatest thinker.</li>
+                            <li><em>The Later Roman Empire</em> — Averil Cameron (Fontana Press, 1993).</li>
+                            <li><em>Coinage in the Roman Economy</em> — Kenneth Harl (Johns Hopkins, 1996). For the economic continuity/decline debate.</li>
+                        </ul>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Module 5 Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "Was the ancient Mediterranean world destroyed by political collapse, religious transformation, or environmental catastrophe? Construct and defend a thesis."<br><br>
+                            <strong>Instructions:</strong> Write at least 800 words drawing on all five modules of this course. This is your final module essay — your capstone will follow. Engage with the Pirenne thesis, address climate/disease evidence, and reflect on what the end of one world and the beginning of another actually looks like from the inside. Submit to Claude when complete.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guiding-questions-box">
+                            <div class="guiding-questions-title">💡 Questions to Guide Your Thinking</div>
+                            <ol>
+                                <li>Pirenne wrote his thesis while imprisoned in WWI, working from memory. Does the biographical context affect how you read the argument?</li>
+                                <li>What would it feel like to live through the 'end' of the ancient world? What evidence would a person living in, say, 500 CE have that something had fundamentally changed?</li>
+                                <li>Is 'Late Antiquity' a useful periodisation, or does it obscure more than it reveals by avoiding the word 'decline'?</li>
+                                <li>You have now studied Mesopotamia, Egypt, Greece, and Rome. What single structural feature — political, economic, ecological — connects all four civilisations?</li>
+                            </ol>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Questions for Claude (ask me anything about this module)
+                                <span class="instructions">Type your questions here and copy them into our conversation — I'll answer them before you write your essay.</span>
+                            </div>
+                            <textarea id="m5-questions" placeholder="What confuses you about this module? Ask away."></textarea>
+                        </div>
+
+                        <div class="word-count" id="m5-wordcount">0 words (minimum 800 required)</div>
+                        <textarea id="m5-essay" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="m5-save">Save Draft</button>
+                            <button class="btn btn-primary" id="m5-submit">Submit Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FINAL ESSAY -->
+                <div class="module-section" id="final">
+                    <div class="module-header">
+                        <h2 class="module-title">Final Essay: Historiography and Western Civilisation</h2>
+                        <div class="module-meta">Capstone Assignment</div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Instructions</h3>
+                        <p class="section-text">Congratulations on completing all five modules. This final essay is your capstone — it should demonstrate mastery of the course and your ability to think historiographically: not just about events, but about how they have been interpreted, by whom, and why.</p>
+                    </div>
+
+                    <!-- ESSAY SECTION -->
+                    <div class="essay-section">
+                        <h3 class="essay-title">Final Essay Assignment</h3>
+                        <div class="essay-instructions">
+                            <strong>Title:</strong> "The ancient civilisations of the Mediterranean are often studied as precursors to 'Western civilisation.' Drawing on all five modules, critically evaluate this framing. What is lost and what is revealed when we tell the story of Mesopotamia, Egypt, Greece, and Rome as a unified 'Western' tradition?"<br><br>
+                            <strong>Instructions:</strong> Minimum 1,500 words. This essay should demonstrate mastery of the course and your ability to think historiographically — not just about events, but about how they have been interpreted. Submit to Claude for final grading.
+                        </div>
+
+                        <div class="rubric-box">
+                            <div class="rubric-box-title">📋 What Claude Will Assess</div>
+                            <ul>
+                                <li><strong>Clarity and strength of your thesis argument</strong></li>
+                                <li><strong>Quality of engagement with primary and secondary sources</strong></li>
+                                <li><strong>Ability to handle counter-arguments and opposing scholarly views</strong></li>
+                                <li><strong>Analytical depth</strong> (not just describing — evaluating evidence)</li>
+                                <li><strong>Writing quality and structure</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="questions-textarea-box">
+                            <div class="questions-textarea-label">❓ Final Questions for Claude
+                                <span class="instructions">Use this space to ask any final questions before you write your capstone essay.</span>
+                            </div>
+                            <textarea id="final-questions" placeholder="Ask any final questions here."></textarea>
+                        </div>
+
+                        <div class="word-count" id="final-wordcount">0 words (minimum 1500 required)</div>
+                        <textarea id="final-essay" placeholder="Begin your final essay here. Aim for a clear thesis in your opening paragraph..."></textarea>
+                        <div class="essay-buttons">
+                            <button class="btn btn-secondary" id="final-save">Save Draft</button>
+                            <button class="btn btn-primary" id="final-submit">Submit Final Essay to Claude for Grading</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBMISSION MODAL -->
+    <div class="modal" id="submissionModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Essay submitted! Here's how to get Claude's feedback:</h3>
+            <div class="modal-steps">
+                <ol>
+                    <li>Copy your entire essay (Ctrl+A / Cmd+A in the textarea, then Ctrl+C / Cmd+C)</li>
+                    <li>Go to your Claude conversation</li>
+                    <li>Paste your essay and say: "Please grade my HIST 102 Module [X] essay. Apply the grading rubric and give me specific feedback on my thesis, use of sources, handling of counter-arguments, and analytical depth. Then let me know if I'm ready to proceed to Module [X+1]."</li>
+                    <li>Claude will give you detailed written feedback before you continue.</li>
+                </ol>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="closeModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESET CONFIRMATION MODAL -->
+    <div class="modal" id="resetModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Reset All Progress?</h3>
+            <p class="modal-text">Are you sure you want to reset all progress? This will delete all saved drafts and submitted essays. This action cannot be undone.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="cancelReset">Cancel</button>
+                <button class="btn btn-primary" id="confirmReset" style="background-color: #d9534f;">Reset All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // STORAGE KEYS
+        const MODULES = ['m1', 'm2', 'm3', 'm4', 'm5', 'final'];
+        const moduleMap = {
+            'm1': 'Module 1',
+            'm2': 'Module 2',
+            'm3': 'Module 3',
+            'm4': 'Module 4',
+            'm5': 'Module 5',
+            'final': 'Final Essay'
+        };
+
+        // INITIALIZATION
+        let currentModule = 'header';
+        const sidebar = document.getElementById('sidebar');
+        const hamburger = document.getElementById('hamburgerBtn');
+        const modal = document.getElementById('submissionModal');
+        const resetModal = document.getElementById('resetModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelResetBtn = document.getElementById('cancelReset');
+        const confirmResetBtn = document.getElementById('confirmReset');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // HAMBURGER MENU TOGGLE
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // CLOSE SIDEBAR ON LINK CLICK (mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+
+        // NAVIGATION
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const module = link.dataset.module;
+                showModule(module);
+
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        function showModule(module) {
+            document.querySelectorAll('.module-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(module).classList.add('active');
+            currentModule = module;
+
+            // Scroll to top
+            document.querySelector('.content-wrapper').scrollTop = 0;
+        }
+
+        // WORD COUNT AND AUTOSAVE
+        MODULES.forEach(module => {
+            const textarea = document.getElementById(`${module}-essay`);
+            const wordCountEl = document.getElementById(`${module}-wordcount`);
+            const saveBtn = document.getElementById(`${module}-save`);
+            const submitBtn = document.getElementById(`${module}-submit`);
+
+            // Load saved draft
+            const savedDraft = localStorage.getItem(`hist102_${module}_draft`);
+            if (savedDraft) {
+                textarea.value = savedDraft;
+                updateWordCount(textarea, wordCountEl, module);
+            }
+
+            // Word count on input
+            textarea.addEventListener('input', () => {
+                updateWordCount(textarea, wordCountEl, module);
+                // Auto-save draft
+                localStorage.setItem(`hist102_${module}_draft`, textarea.value);
+            });
+
+            // Save draft button
+            saveBtn.addEventListener('click', () => {
+                localStorage.setItem(`hist102_${module}_draft`, textarea.value);
+                saveBtn.textContent = 'Saved!';
+                setTimeout(() => {
+                    saveBtn.textContent = 'Save Draft';
+                }, 2000);
+            });
+
+            // Submit button
+            submitBtn.addEventListener('click', () => {
+                const words = textarea.value.trim().split(/\s+/).length;
+                const minWords = module === 'final' ? 1500 : 800;
+
+                if (words < minWords) {
+                    alert(`Your essay must be at least ${minWords} words. Currently: ${words} words.`);
+                    return;
+                }
+
+                // Mark as submitted
+                localStorage.setItem(`hist102_${module}_submitted`, 'true');
+                localStorage.setItem(`hist102_${module}_draft`, textarea.value);
+
+                // Show modal
+                modal.classList.add('show');
+
+                // Update progress
+                updateProgress();
+                updateModuleLocking();
+            });
+        });
+
+        function updateWordCount(textarea, wordCountEl, module) {
+            const words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0).length;
+            const minWords = module === 'final' ? 1500 : 800;
+
+            wordCountEl.textContent = `${words} words`;
+
+            if (words < minWords) {
+                wordCountEl.className = 'word-count warning';
+                wordCountEl.textContent += ` (minimum ${minWords} required)`;
+            } else {
+                wordCountEl.className = 'word-count ok';
+                wordCountEl.textContent += ' ✓';
+            }
+        }
+
+        // PROGRESS BAR
+        function updateProgress() {
+            let completed = 0;
+            MODULES.forEach(module => {
+                if (localStorage.getItem(`hist102_${module}_submitted`) === 'true') {
+                    completed++;
+                }
+            });
+
+            const percentage = (completed / (MODULES.length)) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = completed;
+        }
+
+        // MODULE LOCKING
+        function updateModuleLocking() {
+            MODULES.forEach((module, index) => {
+                const link = document.querySelector(`[data-module="${module}"]`);
+                const isSubmitted = localStorage.getItem(`hist102_${module}_submitted`) === 'true';
+                const isPreviousSubmitted = index === 0 || localStorage.getItem(`hist102_${MODULES[index - 1]}_submitted`) === 'true';
+
+                if (isPreviousSubmitted || isSubmitted) {
+                    link.classList.remove('locked');
+                } else {
+                    link.classList.add('locked');
+                }
+            });
+        }
+
+        // MODAL CLOSE
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+
+        // RESET
+        resetBtn.addEventListener('click', () => {
+            resetModal.classList.add('show');
+        });
+
+        cancelResetBtn.addEventListener('click', () => {
+            resetModal.classList.remove('show');
+        });
+
+        confirmResetBtn.addEventListener('click', () => {
+            MODULES.forEach(module => {
+                localStorage.removeItem(`hist102_${module}_submitted`);
+                localStorage.removeItem(`hist102_${module}_draft`);
+            });
+
+            // Clear all textareas
+            MODULES.forEach(module => {
+                document.getElementById(`${module}-essay`).value = '';
+                document.getElementById(`${module}-wordcount`).textContent = '0 words';
+            });
+
+            updateProgress();
+            updateModuleLocking();
+            resetModal.classList.remove('show');
+
+            // Reload page
+            location.reload();
+        });
+
+        resetModal.addEventListener('click', (e) => {
+            if (e.target === resetModal) {
+                resetModal.classList.remove('show');
+            }
+        });
+
+        // INITIALIZE ON LOAD
+        updateProgress();
+        updateModuleLocking();
+    </script>
+</body>
+</html>
