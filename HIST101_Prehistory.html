@@ -95,3 +95,1795 @@
             border-radius: 8px;
             border-left: 4px solid var(--accent);
         }
+
+        .progress-text {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .modules-list {
+            list-style: none;
+        }
+
+        .module-item {
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .module-item:hover {
+            background-color: rgba(201, 168, 76, 0.1);
+            padding-left: 2rem;
+        }
+
+        .module-item.active {
+            background-color: rgba(201, 168, 76, 0.2);
+            border-left: 4px solid var(--accent);
+            padding-left: 1.25rem;
+        }
+
+        .module-item.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .module-icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .module-label {
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 280px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: white;
+            border-bottom: 2px solid var(--border);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .header-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .intro-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .intro-section h1 {
+            margin-top: 0;
+            color: var(--text-dark);
+        }
+
+        .intro-section p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Module sections */
+        .module-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .module-section.locked {
+            filter: blur(2px);
+            pointer-events: none;
+        }
+
+        .locked-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        .locked-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .locked-text {
+            text-align: center;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .module-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .module-header h2 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .module-number {
+            background-color: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .meta-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Content sections */
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .content-section h3 {
+            margin-top: 1.5em;
+            color: var(--text-dark);
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Online Resources Section */
+        .resources-section {
+            background-color: #f8f8f6;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .resources-section h4 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.35rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #b8963d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .resource-category {
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-category-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reading list */
+        .reading-list {
+            background-color: #f8f8f6;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .reading-list strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .reading-item {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .reading-item strong {
+            display: inline;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .debate-box {
+            background-color: #f0ebe3;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .debate-box h4 {
+            color: var(--text-dark);
+            margin-top: 0;
+        }
+
+        .position {
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background-color: white;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .position-label {
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .discussion-prompts {
+            background-color: #f8f8f6;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .discussion-prompts h4 {
+            color: var(--text-dark);
+            margin-top: 0;
+        }
+
+        .prompt-item {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #ddd;
+            line-height: 1.7;
+        }
+
+        /* Essay section */
+        .essay-section {
+            background-color: #fafaf8;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--accent);
+        }
+
+        .essay-section h3 {
+            margin-top: 0;
+            color: var(--text-dark);
+        }
+
+        .essay-prompt-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .essay-prompt-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .essay-instructions {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .rubric-box {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .rubric-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .rubric-list li {
+            margin: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .rubric-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guiding-questions-box {
+            background-color: #f0ebe3;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .guiding-questions-box h5 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .guiding-questions-box ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .guiding-questions-box li {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .mid-module-questions-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #ddd;
+        }
+
+        .mid-module-questions-box h5 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .mid-module-questions-box p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .textarea-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .textarea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            color: #888;
+            font-weight: 500;
+        }
+
+        .word-count.warning {
+            color: #d97706;
+        }
+
+        .word-count.valid {
+            color: var(--success);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 400px;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: vertical;
+            color: var(--text-dark);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b8963d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #e8e8e4;
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d8d8d4;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .modal-body ol {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            padding: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: fixed;
+                left: 0;
+                top: 0;
+                border-bottom: 1px solid var(--border);
+                max-height: none;
+                transition: all 0.3s ease;
+                overflow: visible;
+            }
+
+            .sidebar.mobile-closed {
+                left: -100%;
+            }
+
+            .main {
+                margin-left: 0;
+                margin-top: 60px;
+            }
+
+            .header {
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header-title {
+                font-size: 1.3rem;
+            }
+
+            .header-subtitle {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .module-section {
+                padding: 1.5rem;
+            }
+
+            .essay-section {
+                padding: 1.5rem;
+            }
+
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+
+            .sidebar-header {
+                display: none;
+            }
+
+            .progress-section {
+                display: none;
+            }
+
+            .modules-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+
+            .module-item {
+                flex: 0 0 auto;
+                padding: 0.5rem 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-bottom: none;
+                border-radius: 4px;
+                margin: 0;
+            }
+
+            .module-item:hover {
+                padding-left: 1rem;
+            }
+
+            .module-item.active {
+                border-left: none;
+                padding-left: 1rem;
+            }
+
+            .module-label {
+                font-size: 0.8rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.1rem;
+            }
+
+            h1 { font-size: 1.4rem; }
+            h2 { font-size: 1.1rem; }
+
+            .module-header {
+                flex-direction: column;
+            }
+
+            .module-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .sidebar, .hamburger, .button-group {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .module-section.locked {
+                filter: none;
+                pointer-events: auto;
+            }
+
+            .locked-overlay {
+                display: none;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8963d;
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+
+        .essay-submitted-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">HIST 101</div>
+                <div class="sidebar-subtitle">Before Civilization: Human Origins & Prehistory</div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">0 / 5 modules complete</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <ul class="modules-list" id="modulesList">
+                <li class="module-item active" data-module="0">
+                    <span class="module-icon" id="icon-0">▶</span>
+                    <span class="module-label">Course Overview</span>
+                </li>
+                <li class="module-item" data-module="1">
+                    <span class="module-icon" id="icon-1">🔒</span>
+                    <span class="module-label">Module 1</span>
+                </li>
+                <li class="module-item locked" data-module="2">
+                    <span class="module-icon" id="icon-2">🔒</span>
+                    <span class="module-label">Module 2</span>
+                </li>
+                <li class="module-item locked" data-module="3">
+                    <span class="module-icon" id="icon-3">🔒</span>
+                    <span class="module-label">Module 3</span>
+                </li>
+                <li class="module-item locked" data-module="4">
+                    <span class="module-icon" id="icon-4">🔒</span>
+                    <span class="module-label">Module 4</span>
+                </li>
+                <li class="module-item locked" data-module="5">
+                    <span class="module-icon" id="icon-5">🔒</span>
+                    <span class="module-label">Module 5</span>
+                </li>
+                <li class="module-item locked" data-module="6">
+                    <span class="module-icon" id="icon-6">🔒</span>
+                    <span class="module-label">Final Essay</span>
+                </li>
+            </ul>
+
+            <div style="padding: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 1rem; font-size: 0.8rem; color: #888;">
+                <button id="resetBtn" style="display: none; width: 100%; background-color: #dc3545; color: white; padding: 0.5rem; margin-top: 0.5rem;">Reset Progress</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <header class="header">
+                <div>
+                    <h1 class="header-title" id="pageTitle">HIST 101</h1>
+                    <p class="header-subtitle" id="pageSubtitle">Before Civilization: Human Origins & Prehistory</p>
+                </div>
+                <button class="hamburger" id="hamburger">☰</button>
+            </header>
+
+            <div class="content" id="mainContent">
+                <!-- Content will be loaded here dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Submission Modal -->
+    <div class="modal" id="submissionModal">
+        <div class="modal-content">
+            <div class="modal-header">Essay submitted! Here's how to get Claude's feedback:</div>
+            <div class="modal-body">
+                <ol>
+                    <li>Copy your entire essay (Ctrl+A / Cmd+A in the textarea, then Ctrl+C / Cmd+C)</li>
+                    <li>Go to your Claude conversation</li>
+                    <li>Paste your essay and say: "Please grade my HIST 101 Module [X] essay. Apply the grading rubric and give me specific feedback on my thesis, use of sources, handling of counter-arguments, and analytical depth. Then let me know if I'm ready to proceed to Module [X+1]."</li>
+                    <li>Claude will give you detailed written feedback before you continue.</li>
+                </ol>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="closeSubmissionModal()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== STATE MANAGEMENT ====================
+        const state = {
+            currentModule: 0,
+            moduleSubmitted: [false, false, false, false, false, false],
+            wordCounts: [0, 0, 0, 0, 0, 0]
+        };
+
+        // Module definitions
+        const modules = [
+            {
+                id: 'overview',
+                title: 'HIST 101 — Before Civilization: Human Origins & Prehistory',
+                subtitle: 'A self-paced undergraduate course',
+                type: 'intro'
+            },
+            {
+                id: 'module1',
+                title: 'Module 1: The Deep Past — Hominids and Human Evolution',
+                subtitle: 'Timeframe: ~7 million – 300,000 years ago',
+                number: 1,
+                type: 'module'
+            },
+            {
+                id: 'module2',
+                title: 'Module 2: Neanderthals, Denisovans & Our Cousins',
+                subtitle: 'Timeframe: ~400,000 – 40,000 years ago',
+                number: 2,
+                type: 'module'
+            },
+            {
+                id: 'module3',
+                title: 'Module 3: Homo Sapiens & the Cognitive Revolution',
+                subtitle: 'Timeframe: ~300,000 – 50,000 years ago',
+                number: 3,
+                type: 'module'
+            },
+            {
+                id: 'module4',
+                title: 'Module 4: Out of Africa — Migration & Adaptation',
+                subtitle: 'Timeframe: ~70,000 – 15,000 years ago',
+                number: 4,
+                type: 'module'
+            },
+            {
+                id: 'module5',
+                title: 'Module 5: The Neolithic Revolution — From Foraging to Farming',
+                subtitle: 'Timeframe: ~12,000 – 5,000 years ago',
+                number: 5,
+                type: 'module'
+            },
+            {
+                id: 'final',
+                title: 'Course Final Essay',
+                subtitle: 'Synthesis and Capstone',
+                number: 6,
+                type: 'final'
+            }
+        ];
+
+        // ==================== INITIALIZATION ====================
+        function init() {
+            loadState();
+            setupEventListeners();
+            updateProgress();
+            renderModule(0);
+            closeMobileMenu();
+        }
+
+        function loadState() {
+            const saved = localStorage.getItem('hist101_state');
+            if (saved) {
+                const loaded = JSON.parse(saved);
+                state.moduleSubmitted = loaded.moduleSubmitted || state.moduleSubmitted;
+            }
+            updateLockStates();
+        }
+
+        function saveState() {
+            localStorage.setItem('hist101_state', JSON.stringify(state));
+        }
+
+        function updateLockStates() {
+            const moduleItems = document.querySelectorAll('.module-item');
+            moduleItems.forEach((item, idx) => {
+                if (idx === 0 || idx === 1) {
+                    item.classList.remove('locked');
+                    return;
+                }
+                if (idx <= 6 && state.moduleSubmitted[idx - 1]) {
+                    item.classList.remove('locked');
+                } else if (idx > 1) {
+                    item.classList.add('locked');
+                }
+            });
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        function setupEventListeners() {
+            document.querySelectorAll('.module-item').forEach((item) => {
+                item.addEventListener('click', (e) => {
+                    if (item.classList.contains('locked')) {
+                        e.preventDefault();
+                        return;
+                    }
+                    const moduleIdx = parseInt(item.dataset.module);
+                    renderModule(moduleIdx);
+                    closeMobileMenu();
+                });
+            });
+
+            document.getElementById('hamburger').addEventListener('click', () => {
+                document.getElementById('sidebar').classList.toggle('mobile-closed');
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                if (confirm('Reset all progress? This cannot be undone.')) {
+                    state.moduleSubmitted = [false, false, false, false, false, false];
+                    state.wordCounts = [0, 0, 0, 0, 0, 0];
+                    for (let i = 1; i <= 6; i++) {
+                        localStorage.removeItem(`hist101_essay_m${i}`);
+                    }
+                    localStorage.removeItem('hist101_state');
+                    location.reload();
+                }
+            });
+        }
+
+        function closeMobileMenu() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.add('mobile-closed');
+            }
+        }
+
+        // ==================== RENDERING ====================
+        function renderModule(idx) {
+            state.currentModule = idx;
+            const module = modules[idx];
+            const content = document.getElementById('mainContent');
+
+            if (module.type === 'intro') {
+                content.innerHTML = renderIntroduction();
+            } else if (module.type === 'module') {
+                content.innerHTML = renderModuleContent(idx);
+            } else if (module.type === 'final') {
+                content.innerHTML = renderFinalEssay();
+            }
+
+            updateActiveNavItem(idx);
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+
+        function updateActiveNavItem(idx) {
+            document.querySelectorAll('.module-item').forEach((item) => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-module="${idx}"]`).classList.add('active');
+        }
+
+        function renderIntroduction() {
+            return `
+                <div class="intro-section">
+                    <h1>HIST 101 — Before Civilization:<br>Human Origins & Prehistory</h1>
+                    <p style="font-size: 1.1rem; color: var(--accent); margin-top: 1rem; margin-bottom: 2rem;">A self-paced undergraduate course</p>
+
+                    <h3 style="margin-top: 2rem;">Course Introduction</h3>
+                    <p>This course begins where all history must begin: not with writing or cities, but with the emergence of our species itself. Over five modules, you will trace the story of human evolution from the earliest hominids seven million years ago through the Neolithic revolution that set the stage for civilization. You will encounter competing theories, contested evidence, and scholars who fundamentally disagree — your task is not to find the 'right answer' but to evaluate evidence and form your own reasoned judgements.</p>
+
+                    <h3>How This Course Works</h3>
+                    <ul>
+                        <li><strong>Five content modules</strong> covering human evolution, migration, cognitive development, and the origins of agriculture</li>
+                        <li><strong>Module essays</strong> — each module includes an essay assignment (minimum 800 words) that you can save as a draft or submit for grading</li>
+                        <li><strong>Progressive unlocking</strong> — Module 2 unlocks only after you submit Module 1's essay, and so on</li>
+                        <li><strong>Final capstone essay</strong> — after completing all five modules, synthesize your learning in a 1,500-word essay</li>
+                    </ul>
+
+                    <h3>How to Submit Essays for Grading</h3>
+                    <ol>
+                        <li>Complete the essay in the textarea at the bottom of each module</li>
+                        <li>Click "Submit Essay to Claude for Grading" when ready</li>
+                        <li>Copy your essay and paste it into a conversation with Claude (Claude.ai)</li>
+                        <li>Use the feedback guidance provided in the submission window</li>
+                        <li>Claude will provide detailed feedback on your argument, evidence, and writing</li>
+                    </ol>
+
+                    <h3>Using Academic Sources</h3>
+                    <p>Each module includes a curated list of readings: popular books, academic papers, and documentaries. You are not required to read everything, but your essays should cite at least one source from each module. The goal is to learn to engage with historical evidence and construct reasoned arguments — not to memorise information.</p>
+
+                    <h3>A Word on Debate</h3>
+                    <p>You will notice that many topics in human evolution and prehistory are actively debated by scholars. There is no single 'correct' position on most questions. What matters is that you can articulate a position clearly, support it with evidence, and acknowledge the strongest counter-arguments. Be prepared to change your mind as you encounter new evidence.</p>
+
+                    <h3>🌐 Online Resources</h3>
+                    <p>Throughout the course, you'll find clickable links to external resources including documentaries, podcasts, academic papers, and museums. All links open in a new tab.</p>
+
+                    <div style="background-color: #f0ebe3; padding: 1.5rem; border-radius: 6px; margin-top: 2rem; border-left: 4px solid var(--accent);">
+                        <p style="margin-top: 0;"><strong>Ready to begin?</strong> Click "Module 1" in the sidebar to start with the deep history of human evolution.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderModuleContent(idx) {
+            const moduleNum = idx;
+            const isLocked = moduleNum > 1 && !state.moduleSubmitted[moduleNum - 1];
+            const module = modules[idx];
+
+            let html = `
+                <div class="module-section ${isLocked ? 'locked' : ''}">
+                    ${isLocked ? `
+                        <div class="locked-overlay">
+                            <div class="locked-icon">🔒</div>
+                            <div class="locked-text">Complete Module ${moduleNum - 1} essay to unlock</div>
+                        </div>
+                    ` : ''}
+
+                    <div class="module-header">
+                        <h2>
+                            <span class="module-number">${moduleNum}</span>
+                            ${module.title}
+                        </h2>
+                        <div class="module-meta">
+                            <div class="meta-item">
+                                <span>📅 ${module.subtitle}</span>
+                            </div>
+                            ${state.moduleSubmitted[moduleNum] ? '<span class="essay-submitted-badge">✓ Submitted</span>' : ''}
+                        </div>
+                    </div>
+
+                    ${getModuleOverview(moduleNum)}
+                    ${getOnlineResources(moduleNum)}
+                    ${getModuleReadings(moduleNum)}
+                    ${getModuleDebate(moduleNum)}
+                    ${getModuleDiscussion(moduleNum)}
+                    ${getModuleAdditionalDive(moduleNum)}
+                    ${getEssaySection(moduleNum)}
+                </div>
+            `;
+
+            return html;
+        }
+
+        function renderFinalEssay() {
+            const isLocked = !state.moduleSubmitted[4];
+            const html = `
+                <div class="module-section ${isLocked ? 'locked' : ''}">
+                    ${isLocked ? `
+                        <div class="locked-overlay">
+                            <div class="locked-icon">🔒</div>
+                            <div class="locked-text">Complete Module 5 essay to unlock</div>
+                        </div>
+                    ` : ''}
+
+                    <div class="module-header">
+                        <h2>
+                            <span class="module-number">6</span>
+                            Course Final Essay — Capstone
+                        </h2>
+                    </div>
+
+                    <div class="content-section">
+                        <p><strong>Drawing on all five modules, construct an argument about what it means to be human.</strong></p>
+                        <p>Use at least three of the following themes: evolution, cognition, migration, social organisation, and the relationship between humans and their environment.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h4>Instructions</h4>
+                        <p>This is your capstone essay for HIST 101. <strong>Minimum 1,500 words.</strong></p>
+                        <p>This essay should demonstrate mastery of the course material and your ability to synthesise across modules. You should:</p>
+                        <ul>
+                            <li>Draw on evidence and readings from at least 3 of the 5 modules</li>
+                            <li>Develop a clear, original thesis about human nature or the nature of humanity</li>
+                            <li>Engage directly with at least one scholarly debate you encountered in the course</li>
+                            <li>Show awareness of how your argument might be contested or challenged</li>
+                        </ul>
+                    </div>
+
+                    ${getEssaySection(6)}
+                </div>
+            `;
+
+            return html;
+        }
+
+        // ==================== MODULE CONTENT GENERATORS ====================
+        function getModuleOverview(num) {
+            const overviews = {
+                1: `<div class="content-section">
+                    <p>Before Homo sapiens, the hominin family tree was bushy, not linear. Australopithecus, Homo habilis, Homo erectus — these were not failed prototypes on a march toward us, but successful species adapted to their environments. Understanding our deep ancestry means confronting uncomfortable questions: what makes us human? When did 'humanity' begin? And is there even a clear boundary?</p>
+                </div>`,
+
+                2: `<div class="content-section">
+                    <p>For most of the 20th century, Neanderthals were caricatured as dim-witted brutes — the evolutionary dead-end that Homo sapiens swept aside. The last two decades of archaeology and ancient DNA research have dismantled this picture almost entirely. Neanderthals used pigments, made ornaments, buried their dead, cared for their injured, and interbred with our ancestors. Understanding them is not just about them — it forces us to re-examine what we thought made us exceptional.</p>
+                </div>`,
+
+                3: `<div class="content-section">
+                    <p>The idea of a 'cognitive revolution' — a sudden mental upgrade ~50,000 years ago that made Homo sapiens truly human — is seductive, tidy, and increasingly contested. New evidence from South African caves keeps pushing the origins of symbolic behaviour back further and further. This module asks: was there a revolution, or a long slow accumulation? And why did earlier narratives place this revolution in Europe rather than Africa?</p>
+                </div>`,
+
+                4: `<div class="content-section">
+                    <p>When did humans first reach Australia? Who were the first Americans — and how did they get there? This module traces the great dispersal of Homo sapiens across the planet, a process spanning tens of thousands of years and requiring extraordinary feats of navigation, adaptation, and endurance. It also introduces one of the liveliest current debates in prehistoric archaeology: the question of when and how the Americas were peopled.</p>
+                </div>`,
+
+                5: `<div class="content-section">
+                    <p>For most of human history — roughly 95% of it — our ancestors were hunter-gatherers. The shift to agriculture, beginning around 12,000 years ago in the Fertile Crescent and independently in at least seven other regions, is often presented as the great leap forward that made civilisation possible. James C. Scott disagrees. Drawing on skeletal evidence, Scott argues that early farmers were shorter, sicker, worked harder, and lived under greater coercion than their forager contemporaries. This module asks: was the Neolithic revolution progress, or a trap?</p>
+                </div>`
+            };
+            return overviews[num] || '';
+        }
+
+        function getOnlineResources(num) {
+            const resources = {
+                1: `<div class="resources-section">
+                    <h4>🌐 Online Resources</h4>
+                    <div class="resource-category">
+                        <div class="resource-category-title">Video Lectures & Documentaries</div>
+                        <a href="https://www.pbs.org/video/nova-what-darwin-never-knew/" target="_blank" rel="noopener" class="resource-link">NOVA: What Darwin Never Knew</a>
+                        <a href="https://www.ted.com/talks/juliet_brophy_how_a_new_species_of_ancestors_is_changing_our_theory_of_human_evolution" target="_blank" rel="noopener" class="resource-link">TED: Juliet Brophy on New Ancestral Species</a>
+                        <a href="https://thecrashcourse.com/courses/human-evolution-crash-course-big-history-6/" target="_blank" rel="noopener" class="resource-link">Crash Course: Human Evolution</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Museums & Archives</div>
+                        <a href="https://humanorigins.si.edu/" target="_blank" rel="noopener" class="resource-link">Smithsonian Human Origins</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Podcasts</div>
+                        <a href="https://open.spotify.com/show/6V0aAfIszvXM9BdkF1sayv" target="_blank" rel="noopener" class="resource-link">Origin Stories on Spotify</a>
+                        <a href="https://podcasts.apple.com/us/podcast/origin-stories/id982555930" target="_blank" rel="noopener" class="resource-link">Origin Stories on Apple Podcasts</a>
+                    </div>
+                </div>`,
+
+                2: `<div class="resources-section">
+                    <h4>🌐 Online Resources</h4>
+                    <div class="resource-category">
+                        <div class="resource-category-title">Video Lectures & Documentaries</div>
+                        <a href="https://www.ted.com/talks/svante_paabo_dna_clues_to_our_inner_neanderthal" target="_blank" rel="noopener" class="resource-link">TED: Svante Pääbo on Neanderthal DNA</a>
+                        <a href="https://www.ted.com/talks/bruce_hardy_the_biggest_myths_about_neanderthals" target="_blank" rel="noopener" class="resource-link">TED: Bruce Hardy on Neanderthal Myths</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Academic Articles & Museums</div>
+                        <a href="https://www.smithsonianmag.com/science-nature/heres-what-we-now-know-about-neanderthals-180983344/" target="_blank" rel="noopener" class="resource-link">Smithsonian: What We Know About Neanderthals</a>
+                        <a href="https://www.smithsonianmag.com/science-nature/rethinking-neanderthals-83341003/" target="_blank" rel="noopener" class="resource-link">Smithsonian: Rethinking Neanderthals</a>
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.2405889121" target="_blank" rel="noopener" class="resource-link">PNAS: Denisovans Open-Access Article</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Podcasts</div>
+                        <a href="https://open.spotify.com/show/6V0aAfIszvXM9BdkF1sayv" target="_blank" rel="noopener" class="resource-link">Origin Stories Podcast</a>
+                    </div>
+                </div>`,
+
+                3: `<div class="resources-section">
+                    <h4>🌐 Online Resources</h4>
+                    <div class="resource-category">
+                        <div class="resource-category-title">Academic Papers</div>
+                        <a href="http://in-africa.org/wp-content/uploads/2012/12/McBrearty-Brooks-2000-JHE-modern-hum-beh.pdf" target="_blank" rel="noopener" class="resource-link">McBrearty & Brooks 2000 (PDF)</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Museums & Resources</div>
+                        <a href="https://www.smithsonianmag.com/science-nature/new-research-redefining-what-we-thought-about-neanderthals-180971918/" target="_blank" rel="noopener" class="resource-link">Smithsonian: Neanderthal Cognitive Research</a>
+                        <a href="https://theconversation.com/topics/human-evolution-2687" target="_blank" rel="noopener" class="resource-link">The Conversation: Human Evolution Hub</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Podcasts</div>
+                        <a href="https://open.spotify.com/show/6V0aAfIszvXM9BdkF1sayv" target="_blank" rel="noopener" class="resource-link">Origin Stories Podcast</a>
+                    </div>
+                </div>`,
+
+                4: `<div class="resources-section">
+                    <h4>🌐 Online Resources</h4>
+                    <div class="resource-category">
+                        <div class="resource-category-title">Video Lectures & Documentaries</div>
+                        <a href="https://www.ted.com/talks/svante_paabo_dna_clues_to_our_inner_neanderthal" target="_blank" rel="noopener" class="resource-link">TED: Svante Pääbo on Migration & DNA</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Museums & Resources</div>
+                        <a href="https://humanorigins.si.edu/" target="_blank" rel="noopener" class="resource-link">Smithsonian Human Origins: Migration Page</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Podcasts</div>
+                        <a href="https://open.spotify.com/show/6V0aAfIszvXM9BdkF1sayv" target="_blank" rel="noopener" class="resource-link">Origin Stories Podcast</a>
+                    </div>
+                </div>`,
+
+                5: `<div class="resources-section">
+                    <h4>🌐 Online Resources</h4>
+                    <div class="resource-category">
+                        <div class="resource-category-title">Books & Archives</div>
+                        <a href="https://archive.org/details/againstgraindeep0000scot_z8i3" target="_blank" rel="noopener" class="resource-link">Against the Grain on Internet Archive</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Lectures & Videos</div>
+                        <a href="https://youtu.be/o70A1VqrxEQ" target="_blank" rel="noopener" class="resource-link">Ian Hodder on Çatalhöyük (YouTube)</a>
+                    </div>
+                    <div class="resource-category" style="margin-top: 1rem;">
+                        <div class="resource-category-title">Podcasts</div>
+                        <a href="https://open.spotify.com/show/6V0aAfIszvXM9BdkF1sayv" target="_blank" rel="noopener" class="resource-link">Origin Stories Podcast</a>
+                    </div>
+                </div>`
+            };
+            return resources[num] || '';
+        }
+
+        function getModuleReadings(num) {
+            const readings = {
+                1: `<div class="reading-list">
+                    <strong>Core Readings</strong>
+                    <div class="reading-item"><strong>Human Evolution: A Very Short Introduction</strong> — Bernard Wood (Oxford University Press, 2005). The authoritative concise overview from a leading paleoanthropologist at George Washington University. Start here.</div>
+                    <div class="reading-item"><strong>Lucy's Legacy: The Quest for Human Origins</strong> — Donald C. Johanson & Kate Wong (Harmony Books, 2009). First-person account from the discoverer of Lucy; bridges popular and academic understanding of Australopithecus.</div>
+                    <div class="reading-item"><strong>The Complete World of Human Evolution</strong> — Chris Stringer & Peter Andrews (Thames & Hudson, 2005). Lavishly illustrated reference with detailed fossil descriptions and phylogenetic analysis.</div>
+                </div>
+
+                <div class="reading-list">
+                    <strong>Academic Sources</strong>
+                    <div class="reading-item">Johanson, D.C. & White, T.D. (1979). "A Systematic Assessment of Early African Hominids." <em>Science</em>, 203(4378), 321–330. The foundational paper establishing Australopithecus afarensis.</div>
+                    <div class="reading-item">"Origin of the Genus Homo" — <em>Evolution: Education and Outreach</em> (Springer). Peer-reviewed synthesis of evidence for early Homo species and behavioural transitions.</div>
+                </div>`,
+
+                2: `<div class="reading-list">
+                    <strong>Core Readings</strong>
+                    <div class="reading-item"><strong>Kindred: Neanderthal Life, Love, Death and Art</strong> — Rebecca Wragg Sykes (Bloomsbury, 2020). The definitive modern synthesis; challenges every Neanderthal stereotype with meticulous archaeological evidence.</div>
+                    <div class="reading-item"><strong>The Origin of Our Species</strong> — Chris Stringer (Allen Lane, 2011). The leading advocate of recent African origin model synthesises fossil, genetic, and behavioural evidence; clear treatment of Neanderthal-modern human relationships.</div>
+                </div>
+
+                <div class="reading-list">
+                    <strong>Academic Sources</strong>
+                    <div class="reading-item">Nowell, April (2023). "Rethinking Neandertals." <em>Annual Review of Anthropology</em>, 52, 315–334. Essential recent synthesis arguing Neanderthals possessed sophisticated cultural capacities.</div>
+                    <div class="reading-item">Henshilwood, C.S. et al. (2018). "An abstract drawing from the 73,000-year-old levels at Blombos Cave, South Africa." <em>Nature</em>, 553, 514–518.</div>
+                    <div class="reading-item">Harris, K. et al. (2023). "Archaeogenetic insights into the demographic history of Late Neanderthals." <em>PNAS</em>, 120(17).</div>
+                </div>`,
+
+                3: `<div class="reading-list">
+                    <strong>Core Readings</strong>
+                    <div class="reading-item"><strong>The Prehistory of the Mind</strong> — Steven Mithen (Thames & Hudson, 1996). Influential theory of cognitive modularisation: art, religion and science became possible when specialised mental modules began to interact.</div>
+                    <div class="reading-item"><strong>Blombos Cave papers</strong> — See academic sources below for the most recent findings on symbolic behaviour in early humans.</div>
+                </div>
+
+                <div class="reading-list">
+                    <strong>Academic Sources</strong>
+                    <div class="reading-item">Henshilwood, C.S. et al. (2009). "Engraved ochres from the Middle Stone Age levels at Blombos Cave." <em>Journal of Human Evolution</em>, 57(1), 27–47.</div>
+                    <div class="reading-item">Mithen, S. (1998). "A creative explosion? Theory of mind, language, and the disembodied mind of the Upper Palaeolithic." In <em>Cognition and Material Culture</em>. Cambridge University Press.</div>
+                </div>`,
+
+                4: `<div class="reading-list">
+                    <strong>Core Readings</strong>
+                    <div class="reading-item"><strong>The Journey of Man: A Genetic Odyssey</strong> — Spencer Wells (Random House, 2002). Traces human migration routes using Y-chromosome genetics; accessible and well-illustrated.</div>
+                    <div class="reading-item"><strong>The Origin of Our Species</strong> — Chris Stringer (Allen Lane, 2011). Chapters on global dispersal and migration timing.</div>
+                </div>
+
+                <div class="reading-list">
+                    <strong>Academic Sources</strong>
+                    <div class="reading-item">"Climatic windows for human migration out of Africa in the past 300,000 years." <em>Nature Communications</em>, 12, 4889 (2021).</div>
+                    <div class="reading-item">Bennett, M.R. et al. (2021). "Evidence of humans in North America during the Last Glacial Maximum." <em>Science</em>, 373(6562), 1528–1531. (The White Sands footprints paper — 23,000 years ago.)</div>
+                </div>`,
+
+                5: `<div class="reading-list">
+                    <strong>Core Readings</strong>
+                    <div class="reading-item"><strong>Against the Grain: A Deep History of the Earliest States</strong> — James C. Scott (Yale University Press, 2017). Radical reframing: argues agriculture enabled the coercive state and was often worse for human welfare than foraging. Essential and provocative.</div>
+                    <div class="reading-item"><strong>The First Farmers: The Origins of Agricultural Societies</strong> — Peter Bellwood (Blackwell, 2004). Global perspective on independent agricultural origins; the counterpoint to Scott.</div>
+                </div>
+
+                <div class="reading-list">
+                    <strong>Academic Sources</strong>
+                    <div class="reading-item">Bowles, S. & Choi, J-K. (2019). "The Neolithic Agricultural Revolution and the Origins of Private Property." <em>Journal of Political Economy</em>, 127(5), 2186–2228.</div>
+                    <div class="reading-item">Price, T.D. (2000). "The Agricultural Transition in Europe." <em>Current Anthropology</em>, 41(1), 73–98.</div>
+                </div>`
+            };
+            return readings[num] || '';
+        }
+
+        function getModuleDebate(num) {
+            const debates = {
+                1: `<div class="debate-box">
+                    <h4>Key Debate: Out of Africa vs. Multiregional Evolution</h4>
+
+                    <div class="position">
+                        <span class="position-label">POSITION A — Out of Africa (Recent African Origin)</span>
+                        <p>Championed by Chris Stringer and supported by the majority of genetic evidence. Argues that while Homo erectus spread out of Africa ~1 million years ago, anatomically modern Homo sapiens originated in Africa ~100,000–200,000 years ago and replaced archaic human populations elsewhere, with limited interbreeding.</p>
+                    </div>
+
+                    <div class="position">
+                        <span class="position-label">POSITION B — Multiregional Continuity</span>
+                        <p>Historically advocated by Milford Wolpoff. Claims that regional populations of Homo erectus independently evolved into modern humans across Eurasia and Africa, with continuous gene flow between regions preventing speciation. Now largely rejected in its strong form, but the discovery of Neanderthal and Denisovan DNA in modern humans has given it partial rehabilitation.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd;"><strong>The Current Picture:</strong> Ancient DNA research (Svante Pääbo, 2022 Nobel Prize) has revealed that the truth is more complex than either pure model: modern humans are overwhelmingly of recent African origin, but carried ~1–4% Neanderthal DNA and up to ~6% Denisovan DNA in some populations — evidence of limited interbreeding after leaving Africa.</p>
+                </div>`,
+
+                2: `<div class="debate-box">
+                    <h4>Key Debate: Were Neanderthals Cognitively Inferior — and Why Did They Disappear?</h4>
+
+                    <div class="position">
+                        <span class="position-label">POSITION A — Cognitive and Behavioural Gap (Older Consensus)</span>
+                        <p>Neanderthals lacked true symbolic thought, language, and representational art. Their extinction was driven by cognitive and technological inferiority relative to Homo sapiens, who outcompeted them for resources.</p>
+                    </div>
+
+                    <div class="position">
+                        <span class="position-label">POSITION B — Cognitive Parity (Current Consensus)</span>
+                        <p>Neanderthals used ochre pigments, made shell ornaments, possibly created cave art, buried their dead with apparent ritual, and cared for severely injured individuals over long periods. Rebecca Wragg Sykes and April Nowell argue differences were of degree and demographic scale, not kind. Their 'extinction' was partial: Neanderthal DNA lives on in every non-African person alive today.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd;"><strong>On Extinction:</strong> Three competing explanations: (1) Competitive replacement by more numerous Homo sapiens; (2) Assimilation through interbreeding; (3) Demographic collapse from climate stress, disease, and small population sizes — possibly without direct conflict. Most current scholars favour a combination of all three.</p>
+                </div>`,
+
+                3: `<div class="debate-box">
+                    <h4>Key Debate: Sudden Revolution or Gradual Accumulation?</h4>
+
+                    <div class="position">
+                        <span class="position-label">POSITION A — The Cognitive Revolution</span>
+                        <p>Popularised by Harari, earlier consensus: Around 50,000 years ago, possibly triggered by a genetic mutation, Homo sapiens gained true symbolic thought, language, and behavioural modernity. The European Upper Palaeolithic (cave paintings at Chauvet, Lascaux) marks the threshold.</p>
+                    </div>
+
+                    <div class="position">
+                        <span class="position-label">POSITION B — Gradual Accumulation (Current Academic Consensus)</span>
+                        <p>Championed by Henshilwood, Nowell, McBrearty & Brooks: Symbolic capacities emerged slowly over 150,000+ years in Africa. The evidence: shell beads at Blombos (100,000 years ago), ochre engravings (73,000 years ago), pigment use going back 164,000 years. There was no single 'revolution' — different capacities emerged at different times in different places.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd;"><strong>The Eurocentrism Problem:</strong> For most of the 20th century, the cave paintings of France and Spain (~35,000 years ago) were treated as the birthplace of symbolic thought. African evidence was either undiscovered, underfunded, or discounted. The systematic excavation of African Middle Stone Age sites over the past 30 years has fundamentally rewritten this story.</p>
+                </div>`,
+
+                4: `<div class="debate-box">
+                    <h4>Key Debate: Clovis First vs. Pre-Clovis — When and How Were the Americas Peopled?</h4>
+
+                    <div class="position">
+                        <span class="position-label">POSITION A — Clovis First (Older Consensus)</span>
+                        <p>The Clovis culture (~13,000 years ago) represents the earliest human occupation of the Americas. Populations crossed the Bering land bridge and moved south through an ice-free corridor.</p>
+                    </div>
+
+                    <div class="position">
+                        <span class="position-label">POSITION B — Pre-Clovis (Current Consensus)</span>
+                        <p>Multiple sites now demonstrate human presence before 13,000 years ago: Monte Verde, Chile (~14,500 years ago); Buttermilk Creek, Texas (~15,500 years ago); White Sands, New Mexico (~23,000 years ago — human footprints). The Coastal Migration / Kelp Highway Hypothesis argues that people followed Pacific coastlines rather than the ice-free corridor — which may not have been passable early enough.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd;"><strong>Methodological Challenge:</strong> Coastal migration routes would now be largely underwater (sea levels rose ~120m after the last glacial maximum). This may explain why pre-Clovis archaeological evidence is sparse and affects how we evaluate absence of evidence.</p>
+                </div>`,
+
+                5: `<div class="debate-box">
+                    <h4>Key Debate: Progress or Trap?</h4>
+
+                    <div class="position">
+                        <span class="position-label">POSITION A — Agriculture as Progress (Traditional view)</span>
+                        <p>Agriculture enabled population growth, division of labour, specialisation, writing, cities, and eventually science and technology. Whatever its short-term costs, it was the prerequisite for everything we value about civilisation.</p>
+                    </div>
+
+                    <div class="position">
+                        <span class="position-label">POSITION B — Agriculture as Trap (James C. Scott, 2017)</span>
+                        <p>Skeletal evidence shows early farmers were shorter and less healthy than contemporary foragers. Farming is backbreaking labour — foragers worked fewer hours. Settled life brought epidemic disease (crowded conditions + animal domestication = zoonoses). Agriculture enabled accumulation of surplus, which enabled the coercive state, taxation, slavery, and conscription.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd;"><strong>Nuance:</strong> Scott's critique is well-evidenced but has limits. Agriculture did enable population growth and ultimately the intellectual achievements of complex societies. The question is: better for whom, and on what timescale?</p>
+                </div>`
+            };
+            return debates[num] || '';
+        }
+
+        function getModuleDiscussion(num) {
+            const discussions = {
+                1: `<div class="discussion-prompts">
+                    <h4>Discussion Prompts — Bring these to Claude</h4>
+                    <div class="prompt-item">
+                        <strong>1. Integrating Multiregional Evidence:</strong> The 'Out of Africa' model and the Multiregional model were once seen as irreconcilable. How did ancient DNA evidence change the terms of the debate? Does it vindicate either side, or does it require a new framework entirely?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>2. Defining the Human:</strong> What does it mean that we define 'human' largely by anatomical and genetic markers? Are there philosophical problems with this definition?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>3. Scientific Disagreement:</strong> Mary Leakey and Donald Johanson had a famous falling-out over the classification of early hominins. What does this tell us about how science (including paleoanthropology) actually works?
+                    </div>
+                </div>`,
+
+                2: `<div class="discussion-prompts">
+                    <h4>Discussion Prompts — Bring these to Claude</h4>
+                    <div class="prompt-item">
+                        <strong>1. Species Hybrids:</strong> 'Denny' — a first-generation hybrid of a Neanderthal mother and Denisovan father — was identified from a single bone fragment in Siberia. What does this single discovery do to our models of species boundaries?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>2. The Nature of Extinction:</strong> If Neanderthal DNA persists in living humans today, in what sense did Neanderthals 'go extinct'?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>3. Bias in Interpretation:</strong> Rebecca Wragg Sykes argues that our image of Neanderthals as 'primitive' tells us more about human psychology and bias than about Neanderthals themselves. Do you agree? What are the methodological risks of projecting modern values onto ancient species?
+                    </div>
+                </div>`,
+
+                3: `<div class="discussion-prompts">
+                    <h4>Discussion Prompts — Bring these to Claude</h4>
+                    <div class="prompt-item">
+                        <strong>1. Defining Modernity:</strong> The concept of 'behavioural modernity' has been criticised as circular — we define it by what modern humans do, then use it to identify modern humans. Is there a better framework?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>2. Stakes of the Debate:</strong> Why does it matter whether the cognitive revolution happened in Africa 150,000 years ago or in Europe 50,000 years ago? What are the political and intellectual stakes?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>3. Testing Cognitive Theories:</strong> Mithen argues that cognitive 'fluidity' — the ability of specialised mental modules to talk to each other — is what makes humans unique. Is this convincing? What evidence would test it?
+                    </div>
+                </div>`,
+
+                4: `<div class="discussion-prompts">
+                    <h4>Discussion Prompts — Bring these to Claude</h4>
+                    <div class="prompt-item">
+                        <strong>1. Underwater Archaeology:</strong> The White Sands footprints (2021) dated human presence in New Mexico to 23,000 years ago — during the Last Glacial Maximum, when the ice-free corridor was closed. What does this require us to revise about our models of the peopling of the Americas?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>2. Absence of Evidence:</strong> Coastal migration routes would now be largely underwater (sea levels rose ~120m after the last glacial maximum). Does this explain why pre-Clovis archaeological evidence is so sparse? How does this affect how we evaluate absence of evidence?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>3. Indigenous Narratives:</strong> Indigenous oral traditions sometimes describe arrival stories that don't match the 'recent migration' narrative. How should historians and archaeologists approach these traditions?
+                    </div>
+                </div>`,
+
+                5: `<div class="discussion-prompts">
+                    <h4>Discussion Prompts — Bring these to Claude</h4>
+                    <div class="prompt-item">
+                        <strong>1. Scott's Critique of Progress:</strong> Scott argues that 'civilisation' was in many ways a catastrophe for the people who lived through it. Does this change how you think about the narrative of 'progress' in history?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>2. Independent Origins:</strong> Agriculture emerged independently in at least 7–10 regions within a few thousand years of each other. Is this coincidence, or does it suggest a common cause (climate change after the last glacial maximum)? What are the implications of each answer?
+                    </div>
+                    <div class="prompt-item">
+                        <strong>3. Alternative Models of Settlement:</strong> Çatalhöyük (9,000 years old, Turkey) shows a large, dense settlement with no obvious hierarchy — no palaces, no temples, no elite burials. Does this complicate the idea that settlement automatically produces hierarchy and coercion?
+                    </div>
+                </div>`
+            };
+            return discussions[num] || '';
+        }
+
+        function getModuleAdditionalDive(num) {
+            const dives = {
+                1: `<div class="content-section">
+                    <h3>Additional Deep Dive Resources</h3>
+                    <ul>
+                        <li><strong>The Handbook of Paleoanthropology</strong> — ed. Henke, Tattersall & Weinberg (Springer, 2007). Comprehensive reference for all major hominid taxa.</li>
+                        <li><strong>Olduvai Gorge: My Search for Early Man</strong> — Mary Leakey (Thames & Hudson, 1979). First-hand excavation account; essential for understanding Homo habilis discovery.</li>
+                    </ul>
+                </div>`,
+
+                2: `<div class="content-section">
+                    <h3>Additional Deep Dive Resources</h3>
+                    <ul>
+                        <li><strong>Svante Pääbo publications:</strong> Any of his papers on ancient DNA (2022 Nobel Prize work); open-access on PNAS and Science.</li>
+                        <li><strong>Denisovans:</strong> Search for recent open-access PNAS/Science articles (2023–2024) on Denisovan genomics.</li>
+                    </ul>
+                </div>`,
+
+                3: `<div class="content-section">
+                    <h3>Additional Deep Dive Resources</h3>
+                    <ul>
+                        <li><strong>The Symbolic Species: The Co-evolution of Language and the Brain</strong> — Terrence Deacon (W.W. Norton, 1997).</li>
+                        <li><strong>McBrearty, S. & Brooks, A.S. (2000).</strong> "The revolution that wasn't: a new interpretation of the origin of modern human behaviour." <em>Journal of Human Evolution</em>, 39(5), 453–563. (The paper that dismantled the European revolution narrative.)</li>
+                    </ul>
+                </div>`,
+
+                4: `<div class="content-section">
+                    <h3>Additional Deep Dive Resources</h3>
+                    <ul>
+                        <li><strong>The Genographic Project publications</strong> (National Geographic) on human migration.</li>
+                        <li><strong>Kelp Highway Hypothesis:</strong> Search for open-access articles (2021–2024) on Pacific coastal migration models.</li>
+                    </ul>
+                </div>`,
+
+                5: `<div class="content-section">
+                    <h3>Additional Deep Dive Resources</h3>
+                    <ul>
+                        <li><strong>The Leopard's Tale: Revealing the Mysteries of Çatalhöyük</strong> — Ian Hodder (Thames & Hudson, 2006).</li>
+                        <li><strong>Religion in the Emergence of Civilization: Çatalhöyük as a Case Study</strong> — ed. Ian Hodder (Routledge, 2010).</li>
+                    </ul>
+                </div>`
+            };
+            return dives[num] || '';
+        }
+
+        function getEssaySection(num) {
+            const isLocked = num > 1 && num < 6 && !state.moduleSubmitted[num - 1];
+            const essayKey = `hist101_essay_m${num}`;
+            const savedEssay = localStorage.getItem(essayKey) || '';
+
+            let essayTitle = '';
+            let essayInstructions = '';
+            let guidingQuestions = [];
+
+            if (num === 1) {
+                essayTitle = 'Was the emergence of Homo sapiens an inevitable outcome of evolutionary pressures, or a contingent event that could easily not have happened?';
+                essayInstructions = 'Drawing on the core readings and at least one academic source from this module, write an essay of no fewer than 800 words arguing a clear position.';
+                guidingQuestions = [
+                    'What is the relationship between anatomical change and behavioural change in human evolution?',
+                    'If modern humans interbred with Neanderthals and Denisovans, does the Out of Africa model need to be modified or abandoned?',
+                    'How does the evidence from ancient DNA change what we previously thought we knew from fossils alone?',
+                    'What methodological challenges face paleoanthropologists that other historians don\'t face?',
+                    'Could evolution have produced a different dominant hominin species instead of Homo sapiens?'
+                ];
+            } else if (num === 2) {
+                essayTitle = 'The extinction of the Neanderthals: was it replacement, assimilation, or collapse?';
+                essayInstructions = 'Write an essay of no fewer than 800 words evaluating the three main explanatory models. Engage with at least two sources from this module.';
+                guidingQuestions = [
+                    'What does "extinction" even mean given that Neanderthal DNA persists in living humans?',
+                    'How does the evidence for Neanderthal cognitive abilities affect the replacement model?',
+                    'What does the discovery of Denisovans tell us about interbreeding patterns between human species?',
+                    'How do we distinguish between competition, climate stress, and disease as causes of population decline?',
+                    'Why did the old stereotypes about Neanderthals persist for so long despite contrary evidence?'
+                ];
+            } else if (num === 3) {
+                essayTitle = 'Was there a cognitive revolution? Assess the archaeological evidence.';
+                essayInstructions = 'Write at least 800 words evaluating the "sudden revolution" and "gradual accumulation" models. You must discuss the Blombos Cave evidence specifically.';
+                guidingQuestions = [
+                    'What counts as evidence of "behavioural modernity"? Is this a useful concept?',
+                    'Does the Blombos Cave evidence require us to abandon the concept of a cognitive revolution?',
+                    'Why has the narrative of human cognitive origins historically been Eurocentric, and what does African evidence reveal?',
+                    'How do we interpret symbolic behaviour from objects alone — without living observers?',
+                    'Could there have been cognitive abilities without material evidence? How would we know?'
+                ];
+            } else if (num === 4) {
+                essayTitle = 'Evaluate the evidence for and against the Clovis First model for the peopling of the Americas.';
+                essayInstructions = 'Write at least 800 words. You must discuss at least two specific pre-Clovis sites and address the coastal migration hypothesis.';
+                guidingQuestions = [
+                    'What routes did humans take out of Africa, and what evidence do we have?',
+                    'How does the White Sands footprint evidence change our understanding of when people reached the Americas?',
+                    'Why would a coastal migration hypothesis be harder to test archaeologically than a land-based route?',
+                    'What does the pre-Clovis evidence tell us about the peopling of the Americas — and what remains uncertain?',
+                    'How should we weigh linguistic, genetic, and archaeological evidence when they point to different timings?'
+                ];
+            } else if (num === 5) {
+                essayTitle = 'Was the Neolithic revolution a turning point in human welfare, or a turning point in human exploitation?';
+                essayInstructions = 'Write at least 800 words engaging directly with Scott\'s argument and at least one counter-argument. Use evidence from at least two specific archaeological sites or studies.';
+                guidingQuestions = [
+                    'Why did humans adopt agriculture — and was it a choice or a necessity?',
+                    'What does the physical evidence (skeletal remains, settlements) tell us about the quality of life of early farmers vs. foragers?',
+                    'Why did agriculture emerge independently in multiple regions around the same time?',
+                    'How do we evaluate trade-offs: smaller populations with less disease versus larger populations with labour coercion?',
+                    'Is Scott\'s critique of agriculture unfairly harsh, or does it reveal uncomfortable truths about civilisation?'
+                ];
+            } else if (num === 6) {
+                essayTitle = 'Drawing on all five modules, construct an argument about what it means to be human.';
+                essayInstructions = 'This is your capstone essay for HIST 101. <strong>Minimum 1,500 words.</strong> Use at least three of the five modules and engage with at least one scholarly debate from the course.';
+                guidingQuestions = [
+                    'What features emerged during human evolution that make us distinctly human?',
+                    'How has our understanding of human origins changed in the past 20 years, and what does that tell us about the nature of historical knowledge?',
+                    'What role did environment, migration, and accident (contingency) play in making us who we are?',
+                    'How should we think about our relationship to earlier hominins, given genetic and cognitive evidence?',
+                    'What does human prehistory suggest about our future as a species?'
+                ];
+            }
+
+            const guidingQuestionsHtml = guidingQuestions.length > 0 ? `
+                <div class="guiding-questions-box">
+                    <h5>💡 Questions to Guide Your Thinking</h5>
+                    <ul>
+                        ${guidingQuestions.map(q => `<li>${q}</li>`).join('')}
+                    </ul>
+                </div>
+            ` : '';
+
+            return `
+                <div class="essay-section ${isLocked ? 'locked' : ''}">
+                    ${isLocked ? `
+                        <div class="locked-overlay">
+                            <div class="locked-icon">🔒</div>
+                            <div class="locked-text">Complete Module ${num - 1} essay to unlock</div>
+                        </div>
+                    ` : ''}
+
+                    <h3>Essay Assignment ${num <= 5 ? '#' + num : '(Capstone)'}</h3>
+
+                    <div class="essay-prompt-box">
+                        <p class="essay-prompt-title">${essayTitle}</p>
+                    </div>
+
+                    <div class="essay-instructions">
+                        <strong>Instructions:</strong> ${essayInstructions} You must engage directly with counter-evidence and show awareness of scholarly debate.
+                    </div>
+
+                    <div class="rubric-box">
+                        <h5>📋 What Claude Will Assess</h5>
+                        <ul class="rubric-list">
+                            <li>Clarity and strength of your thesis argument</li>
+                            <li>Quality of engagement with primary and secondary sources</li>
+                            <li>Ability to handle counter-arguments and opposing scholarly views</li>
+                            <li>Analytical depth (not just describing — evaluating evidence)</li>
+                            <li>Writing quality and structure</li>
+                        </ul>
+                    </div>
+
+                    ${guidingQuestionsHtml}
+
+                    <div class="mid-module-questions-box">
+                        <h5>❓ Questions for Claude (ask me anything about this module)</h5>
+                        <p>Type your questions below and copy them into our conversation — I'll answer them before you write your essay.</p>
+                        <textarea id="questions-${num}" placeholder="What would you like to know about this module's debates, sources, or content?" style="min-height: 100px;"></textarea>
+                    </div>
+
+                    <div class="textarea-wrapper">
+                        <div class="textarea-header">
+                            <span>Your essay</span>
+                            <span class="word-count" id="wordCount-${num}">0 words</span>
+                        </div>
+                        <textarea id="essay-${num}" placeholder="Begin your essay here. Aim for a clear thesis in your opening paragraph..." onkeyup="updateWordCount(${num})">${savedEssay}</textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="saveDraft(${num})">Save Draft</button>
+                        <button class="btn-primary" onclick="submitEssay(${num})">Submit Essay to Claude for Grading</button>
+                    </div>
+
+                    ${state.moduleSubmitted[num] ? '<p style="color: var(--success); margin-top: 1rem; font-weight: 600;">✓ Essay submitted</p>' : ''}
+                </div>
+            `;
+        }
+
+        function updateProgress() {
+            const completed = state.moduleSubmitted.filter(s => s).length;
+            const total = 5;
+            document.getElementById('progressText').textContent = `${completed} / ${total} modules complete`;
+            document.getElementById('progressFill').style.width = `${(completed / total) * 100}%`;
+        }
+
+        function updateWordCount(moduleNum) {
+            const textarea = document.getElementById(`essay-${moduleNum}`);
+            const text = textarea.value.trim();
+            const wordCount = text.length > 0 ? text.split(/\s+/).length : 0;
+            state.wordCounts[moduleNum] = wordCount;
+
+            const countEl = document.getElementById(`wordCount-${moduleNum}`);
+            countEl.textContent = `${wordCount} words`;
+
+            if (moduleNum <= 5 && wordCount < 800) {
+                countEl.classList.remove('valid');
+                countEl.classList.add('warning');
+            } else if (moduleNum === 6 && wordCount < 1500) {
+                countEl.classList.remove('valid');
+                countEl.classList.add('warning');
+            } else {
+                countEl.classList.remove('warning');
+                countEl.classList.add('valid');
+            }
+        }
+
+        function saveDraft(moduleNum) {
+            const textarea = document.getElementById(`essay-${moduleNum}`);
+            const text = textarea.value;
+            localStorage.setItem(`hist101_essay_m${moduleNum}`, text);
+            alert('Draft saved locally. You can continue editing anytime.');
+        }
+
+        function submitEssay(moduleNum) {
+            const textarea = document.getElementById(`essay-${moduleNum}`);
+            const text = textarea.value.trim();
+            const wordCount = text.length > 0 ? text.split(/\s+/).length : 0;
+
+            const minWords = moduleNum === 6 ? 1500 : 800;
+            if (wordCount < minWords) {
+                alert(`Your essay must be at least ${minWords} words. Currently: ${wordCount} words.`);
+                return;
+            }
+
+            localStorage.setItem(`hist101_essay_m${moduleNum}`, text);
+            state.moduleSubmitted[moduleNum] = true;
+            saveState();
+            updateLockStates();
+            updateProgress();
+
+            showSubmissionModal();
+
+            setTimeout(() => {
+                renderModule(state.currentModule);
+            }, 500);
+        }
+
+        function showSubmissionModal() {
+            document.getElementById('submissionModal').classList.add('active');
+        }
+
+        function closeSubmissionModal() {
+            document.getElementById('submissionModal').classList.remove('active');
+        }
+
+        window.addEventListener('load', () => {
+            init();
+        });
+
+        document.getElementById('submissionModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('submissionModal')) {
+                closeSubmissionModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.code === 'KeyR') {
+                document.getElementById('resetBtn').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
